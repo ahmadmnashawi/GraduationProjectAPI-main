@@ -11,9 +11,9 @@ namespace GraduationProjectAPI.Data
         }
         public IQueryable<Post> GetPosts => _db.Posts;
 
-        public void Delete(Post Post)
+        public void Delete(int idPost)
         {
-            var post = _db.Posts.FirstOrDefault(p => p.Id == Post.Id);
+            var post = _db.Posts.FirstOrDefault(p => p.Id == idPost);
             if (post != null)
             {
                 var comment = _db.Comments.Where(p => p.IdPost == post.Id).ToList();

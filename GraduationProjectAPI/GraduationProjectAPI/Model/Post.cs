@@ -5,6 +5,7 @@
         public int Id { set; get; }
         public string Description { set; get; }
         public byte[]? Image { set; get; }
+        public string? ImageOnline { get; set; }
         public DateTime? dateTime { set; get; }
         public int IdUser { set; get; }
         public virtual User? User { set; get; }

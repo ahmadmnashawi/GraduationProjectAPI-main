@@ -66,10 +66,10 @@ namespace GraduationProjectAPI.Controllers
                 return Ok();
             }
         }
-        [HttpDelete]
-        public IActionResult Delete([FromQuery] Post post)
+        [HttpDelete("{id}")]
+        public IActionResult Delete( int id)
         {
-            db.Delete(post);
+            db.Delete(id);
             return Ok();
         }
     }

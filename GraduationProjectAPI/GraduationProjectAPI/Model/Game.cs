@@ -6,6 +6,7 @@
         public string GameName { set; get; }
         public string? GameLevel { set; get; }
         public byte[]? Image { set; get; }
+        public string? ImageOnline { get; set; }
         public virtual ICollection<GameUser>? GameUser { set; get; }
     }
 }

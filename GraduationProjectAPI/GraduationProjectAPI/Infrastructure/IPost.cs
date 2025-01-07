@@ -7,6 +7,6 @@ namespace GraduationProjectAPI.Infrastructure
         public IQueryable<Post> GetPosts { get; }
         public void Save(Post post);
         public void Update(Post post);
-        public void Delete(Post post);
+        public void Delete(int idPost);
     }
 }

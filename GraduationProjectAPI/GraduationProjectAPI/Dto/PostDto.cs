@@ -11,5 +11,7 @@ namespace GraduationProjectAPI.Dto
        //public List<Comment> comments { set; get; }
         public byte[]? UserImage { set; get; }
         public byte[]? GroupImage { set; get; }
+        public string? UserImageOnline { set; get; }
+        public string? GroupImageOnline { set; get; }
     }
 }

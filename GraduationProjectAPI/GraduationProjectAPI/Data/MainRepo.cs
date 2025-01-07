@@ -96,7 +96,7 @@ namespace GraduationProjectAPI.Data
                     if (interaction != null)
                     {
                         dto.post = e;
-                        // dto.Image = e.Post.User.Image;
+                      // dto.UserImageOnline = e.Post.User.Image;
                         dto.UserImage =us.Image;
                         dto.Interaction = interaction.Interaction;
                        // dto.Name = e.Post.User.Name;
@@ -140,6 +140,7 @@ namespace GraduationProjectAPI.Data
                         dto.UserName = us.UserName;
                         dto.NumberLike = NumberLikes(e.Id);
                         dto.GroupName = group.groupName;
+                        dto.GroupImageOnline = group.ImageOnline;
                         dto.GroupImage = group.Image;
                        // dto.comments = _db.Comments.Where(p => p.IdPost == e.Id).ToList();
                         postDtos.Add(dto);

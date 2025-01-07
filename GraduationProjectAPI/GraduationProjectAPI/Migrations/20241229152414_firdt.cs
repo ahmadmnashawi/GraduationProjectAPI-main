@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace GraduationProjectAPI.Migrations
 {
     /// <inheritdoc />
-    public partial class Database : Migration
+    public partial class firdt : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -61,7 +61,8 @@ namespace GraduationProjectAPI.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     GameName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     GameLevel = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Image = table.Column<byte[]>(type: "varbinary(max)", nullable: true)
+                    Image = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
+                    ImageOnline = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -129,6 +130,7 @@ namespace GraduationProjectAPI.Migrations
                     BookPrice = table.Column<int>(type: "int", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
                     bookImage = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
+                    ImageOnline = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IdBookType = table.Column<int>(type: "int", nullable: false),
                     BookTypeId = table.Column<int>(type: "int", nullable: true)
                 },
@@ -152,7 +154,8 @@ namespace GraduationProjectAPI.Migrations
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IdContent = table.Column<int>(type: "int", nullable: false),
                     ContentId = table.Column<int>(type: "int", nullable: true),
-                    Image = table.Column<byte[]>(type: "varbinary(max)", nullable: true)
+                    Image = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
+                    ImageOnline = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -340,6 +343,7 @@ namespace GraduationProjectAPI.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Image = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
+                    ImageOnline = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     dateTime = table.Column<DateTime>(type: "datetime2", nullable: true),
                     IdUser = table.Column<int>(type: "int", nullable: false),
                     UserId = table.Column<int>(type: "int", nullable: true),
@@ -833,49 +837,43 @@ namespace GraduationProjectAPI.Migrations
 
             migrationBuilder.InsertData(
                 table: "Books",
-                columns: new[] { "Id", "BookName", "BookPrice", "BookTypeId", "IdBookType", "IsDeleted", "bookImage" },
+                columns: new[] { "Id", "BookName", "BookPrice", "BookTypeId", "IdBookType", "ImageOnline", "IsDeleted", "bookImage" },
                 values: new object[,]
                 {
-                    { 1, "Happy Planning", 1000, null, 1, false, null },
-                    { 2, "The High 5 Habit", 1000, null, 1, false, null },
-                    { 3, "Big Magic", 1000, null, 1, false, null },
-                    { 4, "Set Boundaries ,Find Peace", 1000, null, 1, false, null },
-                    { 5, "The Power Of Writing It Down", 1000, null, 1, false, null },
-                    { 6, "Life Is In The Transitions", 1000, null, 1, false, null },
-                    { 7, "Why Social Media is Ruining Your Life", 1000, null, 1, false, null },
-                    { 8, "Peak Mind", 1000, null, 1, false, null },
-                    { 9, "Working Hard, Hardly Working", 1000, null, 1, false, null },
-                    { 10, "The Everyday Hero Manifesto", 1000, null, 1, false, null },
-                    { 11, "All Of Us Are Broken", 1000, null, 2, false, null },
-                    { 12, "Burial Of Ghosts", 1000, null, 2, false, null },
-                    { 13, "The Cat Who Caught A Killer", 1000, null, 2, false, null },
-                    { 14, "Dirt Town", 1000, null, 2, false, null },
-                    { 15, "The Rising Tide", 1000, null, 2, false, null },
-                    { 16, "A Murder is Announced", 1000, null, 2, false, null },
-                    { 17, "The Mysterious Affair at Styles", 1000, null, 2, false, null },
-                    { 18, "The Murder of Roger Ackroyd", 1000, null, 2, false, null },
-                    { 19, "Murder on the Orient Express", 1000, null, 2, false, null },
-                    { 20, "Crooked House", 1000, null, 2, false, null },
-                    { 21, "Thinking, Fast and Slow", 1000, null, 3, false, null },
-                    { 22, "Influence: Science and Practice", 1000, null, 3, false, null },
-                    { 23, "The Happiness Hypothesis", 1000, null, 3, false, null },
-                    { 24, "Predictably Irrational", 1000, null, 3, false, null },
-                    { 25, "Emotional Intelligence", 1000, null, 3, false, null },
-                    { 26, "Contagious: Why Things Catch On", 1000, null, 4, false, null },
-                    { 27, "This is Marketing: You Can’t Be Seen Until You Learn To See", 1000, null, 4, false, null },
-                    { 28, "Building a StoryBrand: Clarify Your Message So Customers Will Listen", 1000, null, 4, false, null },
-                    { 29, "Blue Ocean Strategy", 1000, null, 4, false, null },
-                    { 30, "Top of Mind (PB)", 1000, null, 4, false, null },
-                    { 31, "The Guns of August", 1000, null, 5, false, null },
-                    { 32, "Guns, Germs, and Steel", 1000, null, 5, false, null },
-                    { 33, "1776", 1000, null, 5, false, null },
-                    { 34, "The Devil in the White City", 1000, null, 5, false, null },
-                    { 35, "Orientalism", 1000, null, 5, false, null },
-                    { 36, "Fever Pitch", 1000, null, 6, false, null },
-                    { 37, "Open", 1000, null, 6, false, null },
-                    { 38, "The Miracle of Castel di Sangro", 1000, null, 6, false, null },
-                    { 39, "the Blind Side: Evolution of a Game", 1000, null, 6, false, null },
-                    { 40, "Laughing in the hills", 1000, null, 6, false, null }
+                    { 1, "Happy Planning", 1000, null, 1, "https://i.ibb.co/nR1gVnp/images-q-tbn-ANd9-Gc-TOHUK4p-Rvv-Aj3-H8-82kl-OYjb-DIDYsmlx-JLBw-s.jpg", false, null },
+                    { 2, "The High 5 Habit", 1000, null, 1, "https://i.ibb.co/j8tZ7Vw/71-Dp-YJgr-Bp-L-AC-UF1000-1000-QL80.jpg", false, null },
+                    { 3, "Big Magic", 1000, null, 1, "https://i.ibb.co/VQ2XmtQ/814-Po-Pnr-BQL.jpg", false, null },
+                    { 4, "Set Boundaries ,Find Peace", 1000, null, 1, "https://i.ibb.co/vmNSCLF/416-Fj8-Hb6o-L-AC-SY200-QL15.jpg", false, null },
+                    { 5, "The Power Of Writing It Down", 1000, null, 1, "https://i.ibb.co/ySZQsyF/71hyo-OY1xu-L-AC-UF1000-1000-QL80.jpg", false, null },
+                    { 6, "Life Is In The Transitions", 1000, null, 1, "https://i.ibb.co/0Y5Jc8W/714vn15-Nyx-L-AC-UF1000-1000-QL80.jpg", false, null },
+                    { 7, "Why Social Media is Ruining Your Life", 1000, null, 1, "https://i.ibb.co/5Rt5Rjt/38509966.jpg", false, null },
+                    { 8, "Peak Mind", 1000, null, 1, "https://i.ibb.co/NTzTDbK/71-Uqm-q-Ds9-L.jpg", false, null },
+                    { 9, "Working Hard, Hardly Working", 1000, null, 1, "https://i.ibb.co/BL01qMh/57086146.jpg", false, null },
+                    { 10, "The Everyday Hero Manifesto", 1000, null, 1, "https://i.ibb.co/XzLfwFz/711-Rrs3-Tb-UL-AC-UF1000-1000-QL80.jpg", false, null },
+                    { 11, "All Of Us Are Broken", 1000, null, 2, "https://i.ibb.co/vQ0rqh1/images-q-tbn-ANd9-Gc-S21v-XUs-Oi-UAR8-OOatxhfsmr-SR43-Llb-Ipk-XFw-s.jpg", false, null },
+                    { 12, "Burial Of Ghosts", 1000, null, 2, "https://i.ibb.co/wM80pgV/810-V9ul77j-L-UF1000-1000-QL80.jpg", false, null },
+                    { 13, "The Cat Who Caught A Killer", 1000, null, 2, "https://i.ibb.co/jr0MvXM/61171523.jpg", false, null },
+                    { 14, "Dirt Town", 1000, null, 2, "https://i.ibb.co/yPfZHRr/59633393.jpg", false, null },
+                    { 15, "The Rising Tide", 1000, null, 2, "https://i.ibb.co/yRVrQnn/58413941.jpg", false, null },
+                    { 16, "A Murder is Announced", 1000, null, 2, "https://i.ibb.co/6ByLwBm/81-C-MXPJZz-L-AC-UF1000-1000-QL80.jpg", false, null },
+                    { 17, "The Mysterious Affair at Styles", 1000, null, 2, "https://i.ibb.co/pz7fJTn/91-OPp9ldt9-L-AC-UF1000-1000-QL80.jpg", false, null },
+                    { 18, "The Murder of Roger Ackroyd", 1000, null, 2, "https://i.ibb.co/3sMVj94/81ps3-TVSf-SL-AC-UF1000-1000-QL80.jpg", false, null },
+                    { 19, "Murder on the Orient Express", 1000, null, 2, "https://i.ibb.co/n8JZy4m/853510.jpg", false, null },
+                    { 20, "Crooked House", 1000, null, 2, "https://i.ibb.co/wwFGqRS/Crooked-House-First-Edition-Cover-1949.jpg", false, null },
+                    { 21, "Thinking, Fast and Slow", 1000, null, 3, "https://i.ibb.co/nk2yv0s/61fdr-Eu-PJw-L.jpg", false, null },
+                    { 22, "Influence: Science and Practice", 1000, null, 3, "https://i.ibb.co/LPcwgXX/71txgfwih-YL.jpg", false, null },
+                    { 23, "The Happiness Hypothesis", 1000, null, 3, "https://i.ibb.co/3mTszXQ/81z-C1p-SRNIL.jpg", false, null },
+                    { 24, "Predictably Irrational", 1000, null, 3, "https://i.ibb.co/58qp7nw/61cj-ZXBNl2-L.jpg", false, null },
+                    { 25, "Emotional Intelligence", 1000, null, 3, "https://i.ibb.co/FHg4gJN/71z-XQz-Rcl-L.jpg", false, null },
+                    { 26, "Contagious: Why Things Catch On", 1000, null, 4, "https://i.ibb.co/CH8Zc7g/61x-FJd8-Oz-ML.jpg", false, null },
+                    { 27, "This is Marketing: You Can’t Be Seen Until You Learn To See", 1000, null, 4, "https://i.ibb.co/TL1z87C/71un70-E9wh-L.jpg", false, null },
+                    { 28, "Building a StoryBrand: Clarify Your Message So Customers Will Listen", 1000, null, 4, "https://i.ibb.co/yf239WG/71-M92-Awhq-IL.jpg", false, null },
+                    { 29, "Blue Ocean Strategy", 1000, null, 4, "https://i.ibb.co/syv0MC7/91-YCWH4j-Fd-L-AC-UF894-1000-QL80.jpg", false, null },
+                    { 30, "Top of Mind (PB)", 1000, null, 4, "https://i.ibb.co/RjBkkLN/71-Dczw-Xi-W5-L.jpg", false, null },
+                    { 31, "The Guns of August", 1000, null, 5, "https://i.ibb.co/zRBp0Fz/71vkx-Iftlz-L.jpg", false, null },
+                    { 32, "Guns, Germs, and Steel", 1000, null, 5, "https://i.ibb.co/0FvywGZ/61-V8g4-Ggqd-L-AC-UF1000-1000-QL80.jpg", false, null },
+                    { 33, "1776", 1000, null, 5, "https://i.ibb.co/YkMLfDQ/81j0-BRX2-FHL-AC-UF894-1000-QL80.jpg", false, null },
+                    { 34, "The Devil in the White City", 1000, null, 5, "https://i.ibb.co/JyXqPPV/91-Nr-JMBpqc-L-AC-UF894-1000-QL80.jpg", false, null }
                 });
 
             migrationBuilder.InsertData(
@@ -1155,26 +1153,26 @@ namespace GraduationProjectAPI.Migrations
 
             migrationBuilder.InsertData(
                 table: "Games",
-                columns: new[] { "Id", "GameLevel", "GameName", "Image" },
+                columns: new[] { "Id", "GameLevel", "GameName", "Image", "ImageOnline" },
                 values: new object[,]
                 {
-                    { 1, null, "Letter Game", null },
-                    { 2, null, "Word Game", null },
-                    { 3, null, "Math Game", null },
-                    { 4, null, "Foucs Game", null },
-                    { 5, null, "Packet Game", null }
+                    { 1, null, "Letter Game", null, "https://i.ibb.co/xGKJcvf/images-q-tbn-ANd9-Gc-Rw8-Qk-MHrqvcxrk-IOFOBVR3r13-MQk-VUc-ZGCe-Q-s.jpg" },
+                    { 2, null, "Word Game", null, "https://i.ibb.co/stHdMZr/images-q-tbn-ANd9-Gc-Qp-Nt4uu-KVWsowdvn-Hq-Jk-G-FCIV8-SYZm-EENLjri0-M7v-Whid-MEq-OGLMg-IFSfe-Jg-GZe.jpg" },
+                    { 3, null, "Math Game", null, "https://i.ibb.co/JvyfVxK/images-q-tbn-ANd9-Gc-SV6r-E2cz9-L57-CJd-DPAX2zi-S2a-x3-WRn-VKZCQ-s.jpg" },
+                    { 4, null, "Foucs Game", null, "https://i.ibb.co/St8m7bP/pic7490663.jpg" },
+                    { 5, null, "Packet Game", null, "https://i.ibb.co/BjkJBNs/images-q-tbn-ANd9-Gc-Tm9-XZwoit0-w-EJ-Br-Qu7-Cw-Vjqagyre-BYYebg-s.jpg" }
                 });
 
             migrationBuilder.InsertData(
                 table: "Groups",
-                columns: new[] { "Id", "ContentId", "Description", "IdContent", "Image", "groupName" },
+                columns: new[] { "Id", "ContentId", "Description", "IdContent", "Image", "ImageOnline", "groupName" },
                 values: new object[,]
                 {
-                    { 1, null, "A Group Of People Interested in History", 1, null, "Thee Physicists" },
-                    { 2, null, "A Group Of People Interested in Geography", 2, null, "The Earth" },
-                    { 3, null, "A Group Of People Interested in Medicine", 3, null, "Medicine Informations" },
-                    { 4, null, "A Group Of People Interested in Technology", 4, null, "Technology" },
-                    { 5, null, "A Group Of People Interested in Literature", 5, null, "The Science " }
+                    { 1, null, "A Group Of People Interested in History", 1, null, "https://i.ibb.co/3MXDTVP/9781108429474.jpg", "Thee Physicists" },
+                    { 2, null, "A Group Of People Interested in Geography", 2, null, "https://i.ibb.co/QKHsd9h/images-q-tbn-ANd9-Gc-Rye0p7-Kqc-VF8-FU3-Ntc-CV8v-Nys4gl-Uo-BE-xk-Q-s.png", "The Earth" },
+                    { 3, null, "A Group Of People Interested in Medicine", 3, null, "https://i.ibb.co/y6yGK7f/images-q-tbn-ANd9-Gc-SJcvnce-GVp-Qzmf-UGZLCZGWOi54r-Tkza-Ah6n-A-s.jpg", "Medicine Informations" },
+                    { 4, null, "A Group Of People Interested in Technology", 4, null, "https://i.ibb.co/Tmj3GRR/images-q-tbn-ANd9-Gc-Tw6winz-Nu9y-P-ZOtk-LLiri-Gn-Lw-Um9-CP0o8-YA-s.png", "Technology" },
+                    { 5, null, "A Group Of People Interested in Literature", 5, null, "https://i.ibb.co/g3LFQTZ/images-q-tbn-ANd9-Gc-Tr-Ls-F370q-Sz-Yx-I09-UVe-KYzuz-O8-Rn-Ghx-6-HYQ-s.png", "The Science " }
                 });
 
             migrationBuilder.InsertData(
@@ -1190,49 +1188,41 @@ namespace GraduationProjectAPI.Migrations
 
             migrationBuilder.InsertData(
                 table: "Posts",
-                columns: new[] { "Id", "ContentId", "Description", "GroupId", "IdContent", "IdGroup", "IdUser", "Image", "UserId", "dateTime" },
+                columns: new[] { "Id", "ContentId", "Description", "GroupId", "IdContent", "IdGroup", "IdUser", "Image", "ImageOnline", "UserId", "dateTime" },
                 values: new object[,]
                 {
-                    { 1, null, "Physics is a science that studies the general properties of matter and the laws that seek to modify its state or motion without changing its nature.", null, 1, 0, 2, null, null, new DateTime(2023, 8, 14, 18, 40, 28, 253, DateTimeKind.Local).AddTicks(8320) },
-                    { 2, null, "Astrophysics is a branch of astronomy that studies the properties and physical phenomena of celestial bodies. It depends primarily on the spectrometer that analyzes starlight and shows the materials that make up it and the physical conditions prevailing on its surface and in its atmosphere.", null, 1, 0, 3, null, null, new DateTime(2023, 8, 14, 18, 40, 28, 253, DateTimeKind.Local).AddTicks(8369) },
-                    { 3, null, "Radiation is the process by which energy such as subatomic particles is emitted and transmitted. This process is characterized by the transmission of energy in straight lines in a source through a known medium such as air, water or vacuum.", null, 1, 0, 4, null, null, new DateTime(2023, 8, 14, 18, 40, 28, 253, DateTimeKind.Local).AddTicks(8381) },
-                    { 4, null, "Heat is a physical measure of the feeling of hotness or coldness resulting from contact with an object", null, 1, 0, 5, null, null, new DateTime(2023, 8, 14, 18, 40, 28, 253, DateTimeKind.Local).AddTicks(8391) },
-                    { 5, null, "Gravity is the mutual attraction between two bodies and its strength depends on the masses of the two bodies and the distance between them", null, 1, 1, 2, null, null, new DateTime(2023, 8, 14, 18, 40, 28, 253, DateTimeKind.Local).AddTicks(8401) },
-                    { 6, null, "X-rays are similar to light rays, but they are more frequent. The most recent of them are objects under the influence of cathode rays. They were discovered by the scientist Roentgen and are sometimes called by his name. They are electromagnetic waves.", null, 1, 1, 3, null, null, new DateTime(2023, 8, 14, 18, 40, 28, 253, DateTimeKind.Local).AddTicks(8450) },
-                    { 7, null, "Frequency is the number of waves or cycles that leave a known point or reach it per second. This word or convention is most often used in alternating electric current, light and sound waves.", null, 1, 1, 4, null, null, new DateTime(2023, 8, 14, 18, 40, 28, 253, DateTimeKind.Local).AddTicks(8463) },
-                    { 8, null, "Gamma rays are special electromagnetic rays emitted by radium and some other radioactive materials", null, 1, 1, 5, null, null, new DateTime(2023, 8, 14, 18, 40, 28, 253, DateTimeKind.Local).AddTicks(8473) },
-                    { 10, null, "The hurricane is a region of low atmospheric pressure in which the winds move in a spiral movement towards the center, and the spiral movement is counterclockwise in the northern hemisphere and agrees with it in the southern hemisphere", null, 2, 0, 2, null, null, new DateTime(2023, 8, 14, 18, 40, 28, 253, DateTimeKind.Local).AddTicks(8483) },
-                    { 11, null, "What is the definition of land shake?It is a tremor in the earth's crust caused either by volcanic activity underground or by the movement of rocks below the surface", null, 2, 0, 3, null, null, new DateTime(2023, 8, 14, 18, 40, 28, 253, DateTimeKind.Local).AddTicks(8494) },
-                    { 12, null, "Soil in stratigraphy is the part of the Earth's surface that contains a mixture of rock particles, minerals and organic matter that helps plant growth", null, 2, 0, 4, null, null, new DateTime(2023, 8, 14, 18, 40, 28, 253, DateTimeKind.Local).AddTicks(8505) },
-                    { 13, null, "The South Pole is the southernmost point on the Earth's surface, and it is one of two points that border the imaginary line that represents the axis of rotation of the earth around itself", null, 2, 0, 5, null, null, new DateTime(2023, 8, 14, 18, 40, 28, 253, DateTimeKind.Local).AddTicks(8516) },
-                    { 14, null, "The continent is a wide area of   land surrounded by seas and continents are Asia, Africa, America, Oceania, and occupies less than a third of the surface of the globe", null, 2, 2, 2, null, null, new DateTime(2023, 8, 14, 18, 40, 28, 253, DateTimeKind.Local).AddTicks(8527) },
-                    { 15, null, "cumulus :  It is a group of pieces of rock that descended to a steep slope", null, 2, 2, 3, null, null, new DateTime(2023, 8, 14, 18, 40, 28, 253, DateTimeKind.Local).AddTicks(8537) },
-                    { 16, null, "marble : A metamorphic rock consisting of calcite, which is a variable limestone that can be polished beautifully", null, 2, 2, 4, null, null, new DateTime(2023, 8, 14, 18, 40, 28, 253, DateTimeKind.Local).AddTicks(8548) },
-                    { 17, null, "The North Pole is the point located in the far north of the Earth's surface, and it is one of the two points through which the imaginary line passes, which is the axis of the Earth's rotation around itself.", null, 2, 2, 5, null, null, new DateTime(2023, 8, 14, 18, 40, 28, 253, DateTimeKind.Local).AddTicks(8558) },
-                    { 18, null, "Kidney is not  the only excretory organ ,but it is the most imporatnt", null, 3, 0, 2, null, null, new DateTime(2023, 8, 14, 18, 40, 28, 253, DateTimeKind.Local).AddTicks(8569) },
-                    { 19, null, "The Femur is the longest bone in the human body", null, 3, 0, 3, null, null, new DateTime(2023, 8, 14, 18, 40, 28, 253, DateTimeKind.Local).AddTicks(8580) },
-                    { 20, null, "There are 4 loose ribs in the human body", null, 3, 0, 4, null, null, new DateTime(2023, 8, 14, 18, 40, 28, 253, DateTimeKind.Local).AddTicks(8591) },
-                    { 21, null, "When inhaling, the diaphragm muscle contracts", null, 3, 0, 5, null, null, new DateTime(2023, 8, 14, 18, 40, 28, 253, DateTimeKind.Local).AddTicks(8601) },
-                    { 22, null, "Most food is absorbed in the intestines", null, 3, 3, 2, null, null, new DateTime(2023, 8, 14, 18, 40, 28, 253, DateTimeKind.Local).AddTicks(8612) },
-                    { 23, null, "The tricuspid valve is located between the right atrium and the right ventricle", null, 3, 3, 3, null, null, new DateTime(2023, 8, 14, 18, 40, 28, 253, DateTimeKind.Local).AddTicks(8623) },
-                    { 24, null, "There are 7 cervical vertebrae, 12 thoracic vertebrae, 5 lumbar vertebrae, 5 sacral vertebrae, and 4 coccygeal vertebrae.", null, 3, 3, 4, null, null, new DateTime(2023, 8, 14, 18, 40, 28, 253, DateTimeKind.Local).AddTicks(8633) },
-                    { 25, null, "The eye lives within a cavity called the pilgrims", null, 3, 3, 5, null, null, new DateTime(2023, 8, 14, 18, 40, 28, 253, DateTimeKind.Local).AddTicks(8644) },
-                    { 26, null, "The most used application is Facebook, with 1.3 billion users, while the second most used application is WeChat, with 1.26 billion users.", null, 4, 0, 2, null, null, new DateTime(2023, 8, 14, 18, 40, 28, 253, DateTimeKind.Local).AddTicks(8655) },
-                    { 27, null, "PAN, LAN, MAN, GAN, WAN and VPN are a kind of networking technology", null, 4, 0, 3, null, null, new DateTime(2023, 8, 14, 18, 40, 28, 253, DateTimeKind.Local).AddTicks(8666) },
-                    { 28, null, "SD-WAN is one of the fastest emerging segments in network technologies over the past two years", null, 4, 0, 4, null, null, new DateTime(2023, 8, 14, 18, 40, 28, 253, DateTimeKind.Local).AddTicks(8676) },
-                    { 29, null, "Artificial intelligence  - Artificial Intelligence - is a simulation and tradition of human intelligence in the machines programmed to think such as humans and images their actions such as electronic devices and robots, this term can also indicate any machine that displays attributes related to the human mind such as learning and solving problems", null, 4, 0, 5, null, null, new DateTime(2023, 8, 14, 18, 40, 28, 253, DateTimeKind.Local).AddTicks(8686) },
-                    { 30, null, "A GPU is a processor similar to the one on a computer's motherboard.  The job that the graphics card processor performs is to keep the graphics card connected to the computer system.  It is considered the most important component of the graphics card that processes graphics, and the graphics card processor is not separable, that is, it cannot be updated to a higher category.", null, 4, 4, 2, null, null, new DateTime(2023, 8, 14, 18, 40, 28, 253, DateTimeKind.Local).AddTicks(8731) },
-                    { 31, null, "CPU is a machine or an electrical circuit that operates other machines or electronic circuits by giving them orders to perform operations or algorithms;  Most of these operations are data processing.", null, 4, 4, 3, null, null, new DateTime(2023, 8, 14, 18, 40, 28, 253, DateTimeKind.Local).AddTicks(8744) },
-                    { 32, null, "Deepfake or deep falsification is a technique used to fake video clips in a way that makes it difficult for humans to distinguish between what is real and what is fake", null, 4, 4, 4, null, null, new DateTime(2023, 8, 14, 18, 40, 28, 253, DateTimeKind.Local).AddTicks(8755) },
-                    { 33, null, "Bots download, Spam bots, Ticket Bots, Distributed Denial of Service (DDoS) bots, Fraudulent bots, File sharing bots and Social media bots are kind of Malicious bots", null, 4, 4, 5, null, null, new DateTime(2023, 8, 14, 18, 40, 28, 253, DateTimeKind.Local).AddTicks(8765) },
-                    { 34, null, "Snow is a type of deposition in which water droplets are frozen in the form of ice crystals with various hexagonal shapes", null, 5, 0, 2, null, null, new DateTime(2023, 8, 14, 18, 40, 28, 253, DateTimeKind.Local).AddTicks(8776) },
-                    { 35, null, "A cold front is the dividing line between two masses of air, one warm and the other cold, heading towards the warm and pushing under it", null, 5, 0, 3, null, null, new DateTime(2023, 8, 14, 18, 40, 28, 253, DateTimeKind.Local).AddTicks(8788) },
-                    { 36, null, "Did you know that the duration of each cycle of the sun around itself is 24 days and three quarters", null, 5, 0, 4, null, null, new DateTime(2023, 8, 14, 18, 40, 28, 253, DateTimeKind.Local).AddTicks(8799) },
-                    { 37, null, "Absolute zero is the temperature of (162, 273 °) Celsius at which molecular motion vanishes and the body loses its thermal energy", null, 5, 0, 5, null, null, new DateTime(2023, 8, 14, 18, 40, 28, 253, DateTimeKind.Local).AddTicks(8809) },
-                    { 38, null, "Giraffe neck The length of the giraffe's neck can reach more than 13.2 meters and contains the same number of vertebrae as the human neck, i.e. there are seven vertebrae in the giraffe's neck, and the length of each vertebra can exceed more than 25 cm", null, 5, 5, 2, null, null, new DateTime(2023, 8, 14, 18, 40, 28, 253, DateTimeKind.Local).AddTicks(8819) },
-                    { 39, null, "The duration of the land of round about itself : The land that spirves around the same (1000) miles per hour along the tropical surroundings, in every 23 hours, and (56) minutes.", null, 5, 5, 3, null, null, new DateTime(2023, 8, 14, 18, 40, 28, 253, DateTimeKind.Local).AddTicks(8829) },
-                    { 40, null, "The duration of the land of the ground around the sun : The duration of the land of the ground around the sun is only one time, [1/4 365] days.", null, 5, 5, 4, null, null, new DateTime(2023, 8, 14, 18, 40, 28, 253, DateTimeKind.Local).AddTicks(8839) },
-                    { 41, null, "The oldest woman in the world is Maria Branyas Moreira, who is 115 years and 329 days old", null, 5, 5, 5, null, null, new DateTime(2023, 8, 14, 18, 40, 28, 253, DateTimeKind.Local).AddTicks(8850) }
+                    { 1, null, "Physics is a science that studies the general properties of matter and the laws that seek to modify its state or motion without changing its nature.", null, 1, 0, 2, null, "https://i.ibb.co/Jdw0mns/images-q-tbn-ANd9-Gc-S2kgzs-C9-Xz-Rm-Id-S9-L16-RTZtewm-XAx-OAJUeg-s.jpg", null, new DateTime(2024, 12, 29, 18, 24, 14, 26, DateTimeKind.Local).AddTicks(7828) },
+                    { 2, null, "Astrophysics is a branch of astronomy that studies the properties and physical phenomena of celestial bodies. It depends primarily on the spectrometer that analyzes starlight and shows the materials that make up it and the physical conditions prevailing on its surface and in its atmosphere.", null, 1, 0, 3, null, "https://i.ibb.co/ZSCB5Hb/images-q-tbn-ANd9-Gc-QUJte8veo0-ULHb-C-q81sdf8c53-UOSEgu30gg-s.jpg", null, new DateTime(2024, 12, 29, 18, 24, 14, 26, DateTimeKind.Local).AddTicks(7851) },
+                    { 3, null, "Radiation is the process by which energy such as subatomic particles is emitted and transmitted. This process is characterized by the transmission of energy in straight lines in a source through a known medium such as air, water or vacuum.", null, 1, 0, 4, null, "https://i.ibb.co/Pgyg0ZC/radiation2.jpg", null, new DateTime(2024, 12, 29, 18, 24, 14, 26, DateTimeKind.Local).AddTicks(7858) },
+                    { 4, null, "Heat is a physical measure of the feeling of hotness or coldness resulting from contact with an object", null, 1, 0, 5, null, "https://i.ibb.co/k0f640h/698ca25d-3356-4149-a215-453aab0309b2-Getty-Images-139944098.jpg", null, new DateTime(2024, 12, 29, 18, 24, 14, 26, DateTimeKind.Local).AddTicks(7865) },
+                    { 5, null, "Gravity is the mutual attraction between two bodies and its strength depends on the masses of the two bodies and the distance between them", null, 1, 1, 2, null, "https://i.ibb.co/8BqRr8m/images-q-tbn-ANd9-Gc-Sscuymg7-GI-Q-XSUUVOGf-WFvrsps-K-v4-Nag-s.jpg", null, new DateTime(2024, 12, 29, 18, 24, 14, 26, DateTimeKind.Local).AddTicks(7872) },
+                    { 6, null, "X-rays are similar to light rays, but they are more frequent. The most recent of them are objects under the influence of cathode rays. They were discovered by the scientist Roentgen and are sometimes called by his name. They are electromagnetic waves.", null, 1, 1, 3, null, "https://i.ibb.co/mhmFXnr/images-q-tbn-ANd9-Gc-Rhuwykc2qsn4l-KV517u-Eb-BTv-Gj8h-Pjt-Cd1-Iw-s.jpg", null, new DateTime(2024, 12, 29, 18, 24, 14, 26, DateTimeKind.Local).AddTicks(7879) },
+                    { 7, null, "Frequency is the number of waves or cycles that leave a known point or reach it per second. This word or convention is most often used in alternating electric current, light and sound waves.", null, 1, 1, 4, null, "https://i.ibb.co/Wc9fFDx/images-q-tbn-ANd9-Gc-Q9-BSu-I-9z7o72fy6c5y-K0t-UOH9po-YWz-FJRYA-s.png", null, new DateTime(2024, 12, 29, 18, 24, 14, 26, DateTimeKind.Local).AddTicks(7886) },
+                    { 8, null, "Gamma rays are special electromagnetic rays emitted by radium and some other radioactive materials", null, 1, 1, 5, null, "https://i.ibb.co/ZHR61BH/images-q-tbn-ANd9-Gc-R-g-CN7-XUYUe3-HVvynr-LTPf-ATy7-IHS-h-WTp8-A-s.jpg", null, new DateTime(2024, 12, 29, 18, 24, 14, 26, DateTimeKind.Local).AddTicks(7893) },
+                    { 10, null, "The hurricane is a region of low atmospheric pressure in which the winds move in a spiral movement towards the center, and the spiral movement is counterclockwise in the northern hemisphere and agrees with it in the southern hemisphere", null, 2, 0, 2, null, "https://i.ibb.co/g3N6SRs/images-q-tbn-ANd9-Gc-Rye0x-Bk-JWn8gj-L87-Ic-g-Qijx-H3p39-Jt5m-Tww-s.jpg", null, new DateTime(2024, 12, 29, 18, 24, 14, 26, DateTimeKind.Local).AddTicks(7899) },
+                    { 11, null, "What is the definition of land shake?It is a tremor in the earth's crust caused either by volcanic activity underground or by the movement of rocks below the surface", null, 2, 0, 3, null, "https://i.ibb.co/C9H8cs0/images-q-tbn-ANd9-Gc-Qx-Wq-SAQd-Vx5ms0i-Uz-Wn4ub-X6-J0-KUca-OOud-FA-s.jpg", null, new DateTime(2024, 12, 29, 18, 24, 14, 26, DateTimeKind.Local).AddTicks(7907) },
+                    { 12, null, "Soil in stratigraphy is the part of the Earth's surface that contains a mixture of rock particles, minerals and organic matter that helps plant growth", null, 2, 0, 4, null, "https://i.ibb.co/TLwP87r/images-q-tbn-ANd9-Gc-RORohfl-KFF8s-AWbp-SXCwb3-Ms-Ds-Pl-Ju-Zyb-THw-s.jpg", null, new DateTime(2024, 12, 29, 18, 24, 14, 26, DateTimeKind.Local).AddTicks(7913) },
+                    { 13, null, "The South Pole is the southernmost point on the Earth's surface, and it is one of two points that border the imaginary line that represents the axis of rotation of the earth around itself", null, 2, 0, 5, null, "https://i.ibb.co/fxpkbDm/images-q-tbn-ANd9-Gc-T4en1-Ri-Vtz-Yv6e-Jmuri7-O0-QW4-LRo9-Vgg-I0x-A-s.jpg", null, new DateTime(2024, 12, 29, 18, 24, 14, 26, DateTimeKind.Local).AddTicks(7921) },
+                    { 14, null, "The continent is a wide area of   land surrounded by seas and continents are Asia, Africa, America, Oceania, and occupies less than a third of the surface of the globe", null, 2, 2, 2, null, "https://i.ibb.co/BL5BXgK/images-q-tbn-ANd9-Gc-SPjgo-Jxn1y-R7-MDYLFWl-z4-IC2-Nl-Ue-Ynv-Ngw-s.jpg", null, new DateTime(2024, 12, 29, 18, 24, 14, 26, DateTimeKind.Local).AddTicks(7928) },
+                    { 15, null, "cumulus :  It is a group of pieces of rock that descended to a steep slope", null, 2, 2, 3, null, "https://i.ibb.co/m4bvDmn/images-q-tbn-ANd9-Gc-QIe-Gx5-RXZ9-IOLA3-Vd-Qdj-Jja-QN5-PPMHIu-ITQ-s.jpg", null, new DateTime(2024, 12, 29, 18, 24, 14, 26, DateTimeKind.Local).AddTicks(7963) },
+                    { 16, null, "marble : A metamorphic rock consisting of calcite, which is a variable limestone that can be polished beautifully", null, 2, 2, 4, null, "https://i.ibb.co/Drxh9D0/images-q-tbn-ANd9-Gc-Qqr-Tv-W9-VXykz-Ty-Cn-fb5-PKb-Aahf5-LZ50-Lb-FA-s.jpg", null, new DateTime(2024, 12, 29, 18, 24, 14, 26, DateTimeKind.Local).AddTicks(7972) },
+                    { 17, null, "The North Pole is the point located in the far north of the Earth's surface, and it is one of the two points through which the imaginary line passes, which is the axis of the Earth's rotation around itself.", null, 2, 2, 5, null, "https://i.ibb.co/CK7mrWp/images-q-tbn-ANd9-Gc-RBH7j95w-TEy-To2-Yk-Ax-l5-OUBKBl-OV6pm8-Q-s.jpg", null, new DateTime(2024, 12, 29, 18, 24, 14, 26, DateTimeKind.Local).AddTicks(7979) },
+                    { 18, null, "Kidney is not  the only excretory organ ,but it is the most imporatnt", null, 3, 0, 2, null, "https://i.ibb.co/QmL8M58/images-q-tbn-ANd9-Gc-TARvz-P4c87n-Sc3-NAEi-S7h-N9-NPyd-WKib8i-T4-A-s.jpg", null, new DateTime(2024, 12, 29, 18, 24, 14, 26, DateTimeKind.Local).AddTicks(7986) },
+                    { 19, null, "The Femur is the longest bone in the human body", null, 3, 0, 3, null, "https://i.ibb.co/gwfdm3v/images-q-tbn-ANd9-Gc-Tf-Sd-Tn-GYo-Usp-BMo9-O2-Gc-VKj-CMO0-Uh1nmk-N1w-s.jpg", null, new DateTime(2024, 12, 29, 18, 24, 14, 26, DateTimeKind.Local).AddTicks(7993) },
+                    { 20, null, "There are 4 loose ribs in the human body", null, 3, 0, 4, null, "https://i.ibb.co/vVp4VzG/images-q-tbn-ANd9-Gc-Rkmc-W2v-ML6h-1-Yg8-RE2-Hg-Zu-E8-Kw6k-Tc-Z137w-s.jpg", null, new DateTime(2024, 12, 29, 18, 24, 14, 26, DateTimeKind.Local).AddTicks(8001) },
+                    { 21, null, "When inhaling, the diaphragm muscle contracts", null, 3, 0, 5, null, "https://i.ibb.co/YWjxCXv/images-q-tbn-ANd9-Gc-Tu5t7j-Sn-kr-C8-Efd-IXFy-Yr4n-urcl-Hf-Wdp4-Q-s.jpg", null, new DateTime(2024, 12, 29, 18, 24, 14, 26, DateTimeKind.Local).AddTicks(8008) },
+                    { 22, null, "Most food is absorbed in the intestines", null, 3, 3, 2, null, "https://i.ibb.co/2gkLWn8/images-q-tbn-ANd9-Gc-QC2ab6-XMXlj-8-Vh3g-VH3r-ZRAwjcjlqo-EPw-s.jpg", null, new DateTime(2024, 12, 29, 18, 24, 14, 26, DateTimeKind.Local).AddTicks(8016) },
+                    { 23, null, "The tricuspid valve is located between the right atrium and the right ventricle", null, 3, 3, 3, null, "https://i.ibb.co/0CnFs85/images-q-tbn-ANd9-Gc-Rkcx-1-KTBm3-p-SAtz-Cb8-Dbci4-QVc-MJ8-Ged-PQ-s.jpg", null, new DateTime(2024, 12, 29, 18, 24, 14, 26, DateTimeKind.Local).AddTicks(8023) },
+                    { 24, null, "There are 7 cervical vertebrae, 12 thoracic vertebrae, 5 lumbar vertebrae, 5 sacral vertebrae, and 4 coccygeal vertebrae.", null, 3, 3, 4, null, "https://i.ibb.co/W2bgDHp/images-q-tbn-ANd9-Gc-Qf-YZFRrsfia-Ja-Ly-MP2eb-BLy-DJMdtbu-E44ka-A-s.png", null, new DateTime(2024, 12, 29, 18, 24, 14, 26, DateTimeKind.Local).AddTicks(8030) },
+                    { 25, null, "The eye lives within a cavity called the pilgrims", null, 3, 3, 5, null, "https://i.ibb.co/kcBGpyJ/images-q-tbn-ANd9-Gc-TH7-LLr3-Yv5-GJfe-B5n-ARhsr-B3-Azoqnf-QLb-V6-Q-s.jpg", null, new DateTime(2024, 12, 29, 18, 24, 14, 26, DateTimeKind.Local).AddTicks(8037) },
+                    { 26, null, "The most used application is Facebook, with 1.3 billion users, while the second most used application is WeChat, with 1.26 billion users.", null, 4, 0, 2, null, "https://i.ibb.co/pKbKCFB/images-q-tbn-ANd9-Gc-QR4q8-OUDk-OYe-GIs0-Oa44-Uth-A-ZFLtq5eqy-YQ-s.png", null, new DateTime(2024, 12, 29, 18, 24, 14, 26, DateTimeKind.Local).AddTicks(8044) },
+                    { 27, null, "PAN, LAN, MAN, GAN, WAN and VPN are a kind of networking technology", null, 4, 0, 3, null, "https://i.ibb.co/T4K2bbx/images-q-tbn-ANd9-Gc-Rqu-J0-JYPrc10-Laeh-JFzgl-Vdotdn3-Bx-IT07-Zg-s.jpg", null, new DateTime(2024, 12, 29, 18, 24, 14, 26, DateTimeKind.Local).AddTicks(8051) },
+                    { 28, null, "SD-WAN is one of the fastest emerging segments in network technologies over the past two years", null, 4, 0, 4, null, "https://i.ibb.co/NKXCNCr/images-q-tbn-ANd9-Gc-R3-Rzq-Exfg-P81904m-Nutu6l-XF-QVVNvpdrrcw-s.jpg", null, new DateTime(2024, 12, 29, 18, 24, 14, 26, DateTimeKind.Local).AddTicks(8058) },
+                    { 29, null, "Artificial intelligence  - Artificial Intelligence - is a simulation and tradition of human intelligence in the machines programmed to think such as humans and images their actions such as electronic devices and robots, this term can also indicate any machine that displays attributes related to the human mind such as learning and solving problems", null, 4, 0, 5, null, "https://i.ibb.co/c871rk0/images-q-tbn-ANd9-Gc-R9c-Yn8-Y9k0-RBx-H0l-Pu3-Ys7-C5f-288cwvads-A-s.jpg", null, new DateTime(2024, 12, 29, 18, 24, 14, 26, DateTimeKind.Local).AddTicks(8065) },
+                    { 30, null, "A GPU is a processor similar to the one on a computer's motherboard.  The job that the graphics card processor performs is to keep the graphics card connected to the computer system.  It is considered the most important component of the graphics card that processes graphics, and the graphics card processor is not separable, that is, it cannot be updated to a higher category.", null, 4, 4, 2, null, "https://i.ibb.co/txX97yK/images-q-tbn-ANd9-Gc-RU48-LUUzj-j-Eg-FU3x-Aq-Ze7rr-Tlc3jbp-Es-Qcg-s.jpg", null, new DateTime(2024, 12, 29, 18, 24, 14, 26, DateTimeKind.Local).AddTicks(8073) },
+                    { 31, null, "CPU is a machine or an electrical circuit that operates other machines or electronic circuits by giving them orders to perform operations or algorithms;  Most of these operations are data processing.", null, 4, 4, 3, null, "https://i.ibb.co/JFNGGw4/images-q-tbn-ANd9-Gc-Sh4-J-1o0u-OQDY22-BOX1-DTSi76os-KCsn-Euy-Cg-s.png", null, new DateTime(2024, 12, 29, 18, 24, 14, 26, DateTimeKind.Local).AddTicks(8080) },
+                    { 32, null, "Deepfake or deep falsification is a technique used to fake video clips in a way that makes it difficult for humans to distinguish between what is real and what is fake", null, 4, 4, 4, null, "https://i.ibb.co/qFxBC4j/images-q-tbn-ANd9-Gc-Sgw-Jj-CVXTu-Cx-Re-Qm-KZju-Yzvk-LY0-N0-Fx-T4w-s.jpg", null, new DateTime(2024, 12, 29, 18, 24, 14, 26, DateTimeKind.Local).AddTicks(8087) },
+                    { 33, null, "Bots download, Spam bots, Ticket Bots, Distributed Denial of Service (DDoS) bots, Fraudulent bots, File sharing bots and Social media bots are kind of Malicious bots", null, 4, 4, 5, null, "https://i.ibb.co/LZKv73q/images-q-tbn-ANd9-Gc-S9-O4-MIX7xl-GVVk6v01c2-Yf1-VFxib-Ys-Ls-Yf-Q-s.jpg", null, new DateTime(2024, 12, 29, 18, 24, 14, 26, DateTimeKind.Local).AddTicks(8093) }
                 });
 
             migrationBuilder.InsertData(

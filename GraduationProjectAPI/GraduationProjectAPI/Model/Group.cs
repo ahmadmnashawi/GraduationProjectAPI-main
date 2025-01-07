@@ -8,6 +8,8 @@
         public int IdContent { set; get; }
         public virtual Content? Content { set; get; }
         public byte[]? Image { set; get; }
+
+        public string? ImageOnline { get; set; }
         public virtual ICollection<Post>? Post { set; get; }
         public virtual ICollection<UserGroup>? UserGroup { set; get; }
         public virtual ICollection<UserAccessibility>? UserAccessibility { set; get; }

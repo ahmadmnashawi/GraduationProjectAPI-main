@@ -4,7 +4,6 @@ using GraduationProjectAPI.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -12,11 +11,9 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GraduationProjectAPI.Migrations
 {
     [DbContext(typeof(GraduationProjectDbContext))]
-    [Migration("20230814154028_Database")]
-    partial class Database
+    partial class GraduationProjectDbContextModelSnapshot : ModelSnapshot
     {
-        /// <inheritdoc />
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -171,6 +168,9 @@ namespace GraduationProjectAPI.Migrations
                     b.Property<int>("IdBookType")
                         .HasColumnType("int");
 
+                    b.Property<string>("ImageOnline")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
@@ -190,6 +190,7 @@ namespace GraduationProjectAPI.Migrations
                             BookName = "Happy Planning",
                             BookPrice = 1000,
                             IdBookType = 1,
+                            ImageOnline = "https://i.ibb.co/nR1gVnp/images-q-tbn-ANd9-Gc-TOHUK4p-Rvv-Aj3-H8-82kl-OYjb-DIDYsmlx-JLBw-s.jpg",
                             IsDeleted = false
                         },
                         new
@@ -198,6 +199,7 @@ namespace GraduationProjectAPI.Migrations
                             BookName = "The High 5 Habit",
                             BookPrice = 1000,
                             IdBookType = 1,
+                            ImageOnline = "https://i.ibb.co/j8tZ7Vw/71-Dp-YJgr-Bp-L-AC-UF1000-1000-QL80.jpg",
                             IsDeleted = false
                         },
                         new
@@ -206,6 +208,7 @@ namespace GraduationProjectAPI.Migrations
                             BookName = "Big Magic",
                             BookPrice = 1000,
                             IdBookType = 1,
+                            ImageOnline = "https://i.ibb.co/VQ2XmtQ/814-Po-Pnr-BQL.jpg",
                             IsDeleted = false
                         },
                         new
@@ -214,6 +217,7 @@ namespace GraduationProjectAPI.Migrations
                             BookName = "Set Boundaries ,Find Peace",
                             BookPrice = 1000,
                             IdBookType = 1,
+                            ImageOnline = "https://i.ibb.co/vmNSCLF/416-Fj8-Hb6o-L-AC-SY200-QL15.jpg",
                             IsDeleted = false
                         },
                         new
@@ -222,6 +226,7 @@ namespace GraduationProjectAPI.Migrations
                             BookName = "The Power Of Writing It Down",
                             BookPrice = 1000,
                             IdBookType = 1,
+                            ImageOnline = "https://i.ibb.co/ySZQsyF/71hyo-OY1xu-L-AC-UF1000-1000-QL80.jpg",
                             IsDeleted = false
                         },
                         new
@@ -230,6 +235,7 @@ namespace GraduationProjectAPI.Migrations
                             BookName = "Life Is In The Transitions",
                             BookPrice = 1000,
                             IdBookType = 1,
+                            ImageOnline = "https://i.ibb.co/0Y5Jc8W/714vn15-Nyx-L-AC-UF1000-1000-QL80.jpg",
                             IsDeleted = false
                         },
                         new
@@ -238,6 +244,7 @@ namespace GraduationProjectAPI.Migrations
                             BookName = "Why Social Media is Ruining Your Life",
                             BookPrice = 1000,
                             IdBookType = 1,
+                            ImageOnline = "https://i.ibb.co/5Rt5Rjt/38509966.jpg",
                             IsDeleted = false
                         },
                         new
@@ -246,6 +253,7 @@ namespace GraduationProjectAPI.Migrations
                             BookName = "Peak Mind",
                             BookPrice = 1000,
                             IdBookType = 1,
+                            ImageOnline = "https://i.ibb.co/NTzTDbK/71-Uqm-q-Ds9-L.jpg",
                             IsDeleted = false
                         },
                         new
@@ -254,6 +262,7 @@ namespace GraduationProjectAPI.Migrations
                             BookName = "Working Hard, Hardly Working",
                             BookPrice = 1000,
                             IdBookType = 1,
+                            ImageOnline = "https://i.ibb.co/BL01qMh/57086146.jpg",
                             IsDeleted = false
                         },
                         new
@@ -262,6 +271,7 @@ namespace GraduationProjectAPI.Migrations
                             BookName = "The Everyday Hero Manifesto",
                             BookPrice = 1000,
                             IdBookType = 1,
+                            ImageOnline = "https://i.ibb.co/XzLfwFz/711-Rrs3-Tb-UL-AC-UF1000-1000-QL80.jpg",
                             IsDeleted = false
                         },
                         new
@@ -270,6 +280,7 @@ namespace GraduationProjectAPI.Migrations
                             BookName = "All Of Us Are Broken",
                             BookPrice = 1000,
                             IdBookType = 2,
+                            ImageOnline = "https://i.ibb.co/vQ0rqh1/images-q-tbn-ANd9-Gc-S21v-XUs-Oi-UAR8-OOatxhfsmr-SR43-Llb-Ipk-XFw-s.jpg",
                             IsDeleted = false
                         },
                         new
@@ -278,6 +289,7 @@ namespace GraduationProjectAPI.Migrations
                             BookName = "Burial Of Ghosts",
                             BookPrice = 1000,
                             IdBookType = 2,
+                            ImageOnline = "https://i.ibb.co/wM80pgV/810-V9ul77j-L-UF1000-1000-QL80.jpg",
                             IsDeleted = false
                         },
                         new
@@ -286,6 +298,7 @@ namespace GraduationProjectAPI.Migrations
                             BookName = "The Cat Who Caught A Killer",
                             BookPrice = 1000,
                             IdBookType = 2,
+                            ImageOnline = "https://i.ibb.co/jr0MvXM/61171523.jpg",
                             IsDeleted = false
                         },
                         new
@@ -294,6 +307,7 @@ namespace GraduationProjectAPI.Migrations
                             BookName = "Dirt Town",
                             BookPrice = 1000,
                             IdBookType = 2,
+                            ImageOnline = "https://i.ibb.co/yPfZHRr/59633393.jpg",
                             IsDeleted = false
                         },
                         new
@@ -302,6 +316,7 @@ namespace GraduationProjectAPI.Migrations
                             BookName = "The Rising Tide",
                             BookPrice = 1000,
                             IdBookType = 2,
+                            ImageOnline = "https://i.ibb.co/yRVrQnn/58413941.jpg",
                             IsDeleted = false
                         },
                         new
@@ -310,6 +325,7 @@ namespace GraduationProjectAPI.Migrations
                             BookName = "A Murder is Announced",
                             BookPrice = 1000,
                             IdBookType = 2,
+                            ImageOnline = "https://i.ibb.co/6ByLwBm/81-C-MXPJZz-L-AC-UF1000-1000-QL80.jpg",
                             IsDeleted = false
                         },
                         new
@@ -318,6 +334,7 @@ namespace GraduationProjectAPI.Migrations
                             BookName = "The Mysterious Affair at Styles",
                             BookPrice = 1000,
                             IdBookType = 2,
+                            ImageOnline = "https://i.ibb.co/pz7fJTn/91-OPp9ldt9-L-AC-UF1000-1000-QL80.jpg",
                             IsDeleted = false
                         },
                         new
@@ -326,6 +343,7 @@ namespace GraduationProjectAPI.Migrations
                             BookName = "The Murder of Roger Ackroyd",
                             BookPrice = 1000,
                             IdBookType = 2,
+                            ImageOnline = "https://i.ibb.co/3sMVj94/81ps3-TVSf-SL-AC-UF1000-1000-QL80.jpg",
                             IsDeleted = false
                         },
                         new
@@ -334,6 +352,7 @@ namespace GraduationProjectAPI.Migrations
                             BookName = "Murder on the Orient Express",
                             BookPrice = 1000,
                             IdBookType = 2,
+                            ImageOnline = "https://i.ibb.co/n8JZy4m/853510.jpg",
                             IsDeleted = false
                         },
                         new
@@ -342,6 +361,7 @@ namespace GraduationProjectAPI.Migrations
                             BookName = "Crooked House",
                             BookPrice = 1000,
                             IdBookType = 2,
+                            ImageOnline = "https://i.ibb.co/wwFGqRS/Crooked-House-First-Edition-Cover-1949.jpg",
                             IsDeleted = false
                         },
                         new
@@ -350,6 +370,7 @@ namespace GraduationProjectAPI.Migrations
                             BookName = "Thinking, Fast and Slow",
                             BookPrice = 1000,
                             IdBookType = 3,
+                            ImageOnline = "https://i.ibb.co/nk2yv0s/61fdr-Eu-PJw-L.jpg",
                             IsDeleted = false
                         },
                         new
@@ -358,6 +379,7 @@ namespace GraduationProjectAPI.Migrations
                             BookName = "Influence: Science and Practice",
                             BookPrice = 1000,
                             IdBookType = 3,
+                            ImageOnline = "https://i.ibb.co/LPcwgXX/71txgfwih-YL.jpg",
                             IsDeleted = false
                         },
                         new
@@ -366,6 +388,7 @@ namespace GraduationProjectAPI.Migrations
                             BookName = "The Happiness Hypothesis",
                             BookPrice = 1000,
                             IdBookType = 3,
+                            ImageOnline = "https://i.ibb.co/3mTszXQ/81z-C1p-SRNIL.jpg",
                             IsDeleted = false
                         },
                         new
@@ -374,6 +397,7 @@ namespace GraduationProjectAPI.Migrations
                             BookName = "Predictably Irrational",
                             BookPrice = 1000,
                             IdBookType = 3,
+                            ImageOnline = "https://i.ibb.co/58qp7nw/61cj-ZXBNl2-L.jpg",
                             IsDeleted = false
                         },
                         new
@@ -382,6 +406,7 @@ namespace GraduationProjectAPI.Migrations
                             BookName = "Emotional Intelligence",
                             BookPrice = 1000,
                             IdBookType = 3,
+                            ImageOnline = "https://i.ibb.co/FHg4gJN/71z-XQz-Rcl-L.jpg",
                             IsDeleted = false
                         },
                         new
@@ -390,6 +415,7 @@ namespace GraduationProjectAPI.Migrations
                             BookName = "Contagious: Why Things Catch On",
                             BookPrice = 1000,
                             IdBookType = 4,
+                            ImageOnline = "https://i.ibb.co/CH8Zc7g/61x-FJd8-Oz-ML.jpg",
                             IsDeleted = false
                         },
                         new
@@ -398,6 +424,7 @@ namespace GraduationProjectAPI.Migrations
                             BookName = "This is Marketing: You Can’t Be Seen Until You Learn To See",
                             BookPrice = 1000,
                             IdBookType = 4,
+                            ImageOnline = "https://i.ibb.co/TL1z87C/71un70-E9wh-L.jpg",
                             IsDeleted = false
                         },
                         new
@@ -406,6 +433,7 @@ namespace GraduationProjectAPI.Migrations
                             BookName = "Building a StoryBrand: Clarify Your Message So Customers Will Listen",
                             BookPrice = 1000,
                             IdBookType = 4,
+                            ImageOnline = "https://i.ibb.co/yf239WG/71-M92-Awhq-IL.jpg",
                             IsDeleted = false
                         },
                         new
@@ -414,6 +442,7 @@ namespace GraduationProjectAPI.Migrations
                             BookName = "Blue Ocean Strategy",
                             BookPrice = 1000,
                             IdBookType = 4,
+                            ImageOnline = "https://i.ibb.co/syv0MC7/91-YCWH4j-Fd-L-AC-UF894-1000-QL80.jpg",
                             IsDeleted = false
                         },
                         new
@@ -422,6 +451,7 @@ namespace GraduationProjectAPI.Migrations
                             BookName = "Top of Mind (PB)",
                             BookPrice = 1000,
                             IdBookType = 4,
+                            ImageOnline = "https://i.ibb.co/RjBkkLN/71-Dczw-Xi-W5-L.jpg",
                             IsDeleted = false
                         },
                         new
@@ -430,6 +460,7 @@ namespace GraduationProjectAPI.Migrations
                             BookName = "The Guns of August",
                             BookPrice = 1000,
                             IdBookType = 5,
+                            ImageOnline = "https://i.ibb.co/zRBp0Fz/71vkx-Iftlz-L.jpg",
                             IsDeleted = false
                         },
                         new
@@ -438,6 +469,7 @@ namespace GraduationProjectAPI.Migrations
                             BookName = "Guns, Germs, and Steel",
                             BookPrice = 1000,
                             IdBookType = 5,
+                            ImageOnline = "https://i.ibb.co/0FvywGZ/61-V8g4-Ggqd-L-AC-UF1000-1000-QL80.jpg",
                             IsDeleted = false
                         },
                         new
@@ -446,6 +478,7 @@ namespace GraduationProjectAPI.Migrations
                             BookName = "1776",
                             BookPrice = 1000,
                             IdBookType = 5,
+                            ImageOnline = "https://i.ibb.co/YkMLfDQ/81j0-BRX2-FHL-AC-UF894-1000-QL80.jpg",
                             IsDeleted = false
                         },
                         new
@@ -454,54 +487,7 @@ namespace GraduationProjectAPI.Migrations
                             BookName = "The Devil in the White City",
                             BookPrice = 1000,
                             IdBookType = 5,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            Id = 35,
-                            BookName = "Orientalism",
-                            BookPrice = 1000,
-                            IdBookType = 5,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            Id = 36,
-                            BookName = "Fever Pitch",
-                            BookPrice = 1000,
-                            IdBookType = 6,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            Id = 37,
-                            BookName = "Open",
-                            BookPrice = 1000,
-                            IdBookType = 6,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            Id = 38,
-                            BookName = "The Miracle of Castel di Sangro",
-                            BookPrice = 1000,
-                            IdBookType = 6,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            Id = 39,
-                            BookName = "the Blind Side: Evolution of a Game",
-                            BookPrice = 1000,
-                            IdBookType = 6,
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            Id = 40,
-                            BookName = "Laughing in the hills",
-                            BookPrice = 1000,
-                            IdBookType = 6,
+                            ImageOnline = "https://i.ibb.co/JyXqPPV/91-Nr-JMBpqc-L-AC-UF894-1000-QL80.jpg",
                             IsDeleted = false
                         });
                 });
@@ -3822,6 +3808,9 @@ namespace GraduationProjectAPI.Migrations
                     b.Property<byte[]>("Image")
                         .HasColumnType("varbinary(max)");
 
+                    b.Property<string>("ImageOnline")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
                     b.ToTable("Games");
@@ -3830,27 +3819,32 @@ namespace GraduationProjectAPI.Migrations
                         new
                         {
                             Id = 1,
-                            GameName = "Letter Game"
+                            GameName = "Letter Game",
+                            ImageOnline = "https://i.ibb.co/xGKJcvf/images-q-tbn-ANd9-Gc-Rw8-Qk-MHrqvcxrk-IOFOBVR3r13-MQk-VUc-ZGCe-Q-s.jpg"
                         },
                         new
                         {
                             Id = 2,
-                            GameName = "Word Game"
+                            GameName = "Word Game",
+                            ImageOnline = "https://i.ibb.co/stHdMZr/images-q-tbn-ANd9-Gc-Qp-Nt4uu-KVWsowdvn-Hq-Jk-G-FCIV8-SYZm-EENLjri0-M7v-Whid-MEq-OGLMg-IFSfe-Jg-GZe.jpg"
                         },
                         new
                         {
                             Id = 3,
-                            GameName = "Math Game"
+                            GameName = "Math Game",
+                            ImageOnline = "https://i.ibb.co/JvyfVxK/images-q-tbn-ANd9-Gc-SV6r-E2cz9-L57-CJd-DPAX2zi-S2a-x3-WRn-VKZCQ-s.jpg"
                         },
                         new
                         {
                             Id = 4,
-                            GameName = "Foucs Game"
+                            GameName = "Foucs Game",
+                            ImageOnline = "https://i.ibb.co/St8m7bP/pic7490663.jpg"
                         },
                         new
                         {
                             Id = 5,
-                            GameName = "Packet Game"
+                            GameName = "Packet Game",
+                            ImageOnline = "https://i.ibb.co/BjkJBNs/images-q-tbn-ANd9-Gc-Tm9-XZwoit0-w-EJ-Br-Qu7-Cw-Vjqagyre-BYYebg-s.jpg"
                         });
                 });
 
@@ -4072,6 +4066,9 @@ namespace GraduationProjectAPI.Migrations
                     b.Property<byte[]>("Image")
                         .HasColumnType("varbinary(max)");
 
+                    b.Property<string>("ImageOnline")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("groupName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -4088,6 +4085,7 @@ namespace GraduationProjectAPI.Migrations
                             Id = 1,
                             Description = "A Group Of People Interested in History",
                             IdContent = 1,
+                            ImageOnline = "https://i.ibb.co/3MXDTVP/9781108429474.jpg",
                             groupName = "Thee Physicists"
                         },
                         new
@@ -4095,6 +4093,7 @@ namespace GraduationProjectAPI.Migrations
                             Id = 2,
                             Description = "A Group Of People Interested in Geography",
                             IdContent = 2,
+                            ImageOnline = "https://i.ibb.co/QKHsd9h/images-q-tbn-ANd9-Gc-Rye0p7-Kqc-VF8-FU3-Ntc-CV8v-Nys4gl-Uo-BE-xk-Q-s.png",
                             groupName = "The Earth"
                         },
                         new
@@ -4102,6 +4101,7 @@ namespace GraduationProjectAPI.Migrations
                             Id = 3,
                             Description = "A Group Of People Interested in Medicine",
                             IdContent = 3,
+                            ImageOnline = "https://i.ibb.co/y6yGK7f/images-q-tbn-ANd9-Gc-SJcvnce-GVp-Qzmf-UGZLCZGWOi54r-Tkza-Ah6n-A-s.jpg",
                             groupName = "Medicine Informations"
                         },
                         new
@@ -4109,6 +4109,7 @@ namespace GraduationProjectAPI.Migrations
                             Id = 4,
                             Description = "A Group Of People Interested in Technology",
                             IdContent = 4,
+                            ImageOnline = "https://i.ibb.co/Tmj3GRR/images-q-tbn-ANd9-Gc-Tw6winz-Nu9y-P-ZOtk-LLiri-Gn-Lw-Um9-CP0o8-YA-s.png",
                             groupName = "Technology"
                         },
                         new
@@ -4116,6 +4117,7 @@ namespace GraduationProjectAPI.Migrations
                             Id = 5,
                             Description = "A Group Of People Interested in Literature",
                             IdContent = 5,
+                            ImageOnline = "https://i.ibb.co/g3LFQTZ/images-q-tbn-ANd9-Gc-Tr-Ls-F370q-Sz-Yx-I09-UVe-KYzuz-O8-Rn-Ghx-6-HYQ-s.png",
                             groupName = "The Science "
                         });
                 });
@@ -4197,6 +4199,9 @@ namespace GraduationProjectAPI.Migrations
                     b.Property<byte[]>("Image")
                         .HasColumnType("varbinary(max)");
 
+                    b.Property<string>("ImageOnline")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int?>("UserId")
                         .HasColumnType("int");
 
@@ -4221,7 +4226,8 @@ namespace GraduationProjectAPI.Migrations
                             IdContent = 1,
                             IdGroup = 0,
                             IdUser = 2,
-                            dateTime = new DateTime(2023, 8, 14, 18, 40, 28, 253, DateTimeKind.Local).AddTicks(8320)
+                            ImageOnline = "https://i.ibb.co/Jdw0mns/images-q-tbn-ANd9-Gc-S2kgzs-C9-Xz-Rm-Id-S9-L16-RTZtewm-XAx-OAJUeg-s.jpg",
+                            dateTime = new DateTime(2024, 12, 29, 18, 24, 14, 26, DateTimeKind.Local).AddTicks(7828)
                         },
                         new
                         {
@@ -4230,7 +4236,8 @@ namespace GraduationProjectAPI.Migrations
                             IdContent = 1,
                             IdGroup = 0,
                             IdUser = 3,
-                            dateTime = new DateTime(2023, 8, 14, 18, 40, 28, 253, DateTimeKind.Local).AddTicks(8369)
+                            ImageOnline = "https://i.ibb.co/ZSCB5Hb/images-q-tbn-ANd9-Gc-QUJte8veo0-ULHb-C-q81sdf8c53-UOSEgu30gg-s.jpg",
+                            dateTime = new DateTime(2024, 12, 29, 18, 24, 14, 26, DateTimeKind.Local).AddTicks(7851)
                         },
                         new
                         {
@@ -4239,7 +4246,8 @@ namespace GraduationProjectAPI.Migrations
                             IdContent = 1,
                             IdGroup = 0,
                             IdUser = 4,
-                            dateTime = new DateTime(2023, 8, 14, 18, 40, 28, 253, DateTimeKind.Local).AddTicks(8381)
+                            ImageOnline = "https://i.ibb.co/Pgyg0ZC/radiation2.jpg",
+                            dateTime = new DateTime(2024, 12, 29, 18, 24, 14, 26, DateTimeKind.Local).AddTicks(7858)
                         },
                         new
                         {
@@ -4248,7 +4256,8 @@ namespace GraduationProjectAPI.Migrations
                             IdContent = 1,
                             IdGroup = 0,
                             IdUser = 5,
-                            dateTime = new DateTime(2023, 8, 14, 18, 40, 28, 253, DateTimeKind.Local).AddTicks(8391)
+                            ImageOnline = "https://i.ibb.co/k0f640h/698ca25d-3356-4149-a215-453aab0309b2-Getty-Images-139944098.jpg",
+                            dateTime = new DateTime(2024, 12, 29, 18, 24, 14, 26, DateTimeKind.Local).AddTicks(7865)
                         },
                         new
                         {
@@ -4257,7 +4266,8 @@ namespace GraduationProjectAPI.Migrations
                             IdContent = 1,
                             IdGroup = 1,
                             IdUser = 2,
-                            dateTime = new DateTime(2023, 8, 14, 18, 40, 28, 253, DateTimeKind.Local).AddTicks(8401)
+                            ImageOnline = "https://i.ibb.co/8BqRr8m/images-q-tbn-ANd9-Gc-Sscuymg7-GI-Q-XSUUVOGf-WFvrsps-K-v4-Nag-s.jpg",
+                            dateTime = new DateTime(2024, 12, 29, 18, 24, 14, 26, DateTimeKind.Local).AddTicks(7872)
                         },
                         new
                         {
@@ -4266,7 +4276,8 @@ namespace GraduationProjectAPI.Migrations
                             IdContent = 1,
                             IdGroup = 1,
                             IdUser = 3,
-                            dateTime = new DateTime(2023, 8, 14, 18, 40, 28, 253, DateTimeKind.Local).AddTicks(8450)
+                            ImageOnline = "https://i.ibb.co/mhmFXnr/images-q-tbn-ANd9-Gc-Rhuwykc2qsn4l-KV517u-Eb-BTv-Gj8h-Pjt-Cd1-Iw-s.jpg",
+                            dateTime = new DateTime(2024, 12, 29, 18, 24, 14, 26, DateTimeKind.Local).AddTicks(7879)
                         },
                         new
                         {
@@ -4275,7 +4286,8 @@ namespace GraduationProjectAPI.Migrations
                             IdContent = 1,
                             IdGroup = 1,
                             IdUser = 4,
-                            dateTime = new DateTime(2023, 8, 14, 18, 40, 28, 253, DateTimeKind.Local).AddTicks(8463)
+                            ImageOnline = "https://i.ibb.co/Wc9fFDx/images-q-tbn-ANd9-Gc-Q9-BSu-I-9z7o72fy6c5y-K0t-UOH9po-YWz-FJRYA-s.png",
+                            dateTime = new DateTime(2024, 12, 29, 18, 24, 14, 26, DateTimeKind.Local).AddTicks(7886)
                         },
                         new
                         {
@@ -4284,7 +4296,8 @@ namespace GraduationProjectAPI.Migrations
                             IdContent = 1,
                             IdGroup = 1,
                             IdUser = 5,
-                            dateTime = new DateTime(2023, 8, 14, 18, 40, 28, 253, DateTimeKind.Local).AddTicks(8473)
+                            ImageOnline = "https://i.ibb.co/ZHR61BH/images-q-tbn-ANd9-Gc-R-g-CN7-XUYUe3-HVvynr-LTPf-ATy7-IHS-h-WTp8-A-s.jpg",
+                            dateTime = new DateTime(2024, 12, 29, 18, 24, 14, 26, DateTimeKind.Local).AddTicks(7893)
                         },
                         new
                         {
@@ -4293,7 +4306,8 @@ namespace GraduationProjectAPI.Migrations
                             IdContent = 2,
                             IdGroup = 0,
                             IdUser = 2,
-                            dateTime = new DateTime(2023, 8, 14, 18, 40, 28, 253, DateTimeKind.Local).AddTicks(8483)
+                            ImageOnline = "https://i.ibb.co/g3N6SRs/images-q-tbn-ANd9-Gc-Rye0x-Bk-JWn8gj-L87-Ic-g-Qijx-H3p39-Jt5m-Tww-s.jpg",
+                            dateTime = new DateTime(2024, 12, 29, 18, 24, 14, 26, DateTimeKind.Local).AddTicks(7899)
                         },
                         new
                         {
@@ -4302,7 +4316,8 @@ namespace GraduationProjectAPI.Migrations
                             IdContent = 2,
                             IdGroup = 0,
                             IdUser = 3,
-                            dateTime = new DateTime(2023, 8, 14, 18, 40, 28, 253, DateTimeKind.Local).AddTicks(8494)
+                            ImageOnline = "https://i.ibb.co/C9H8cs0/images-q-tbn-ANd9-Gc-Qx-Wq-SAQd-Vx5ms0i-Uz-Wn4ub-X6-J0-KUca-OOud-FA-s.jpg",
+                            dateTime = new DateTime(2024, 12, 29, 18, 24, 14, 26, DateTimeKind.Local).AddTicks(7907)
                         },
                         new
                         {
@@ -4311,7 +4326,8 @@ namespace GraduationProjectAPI.Migrations
                             IdContent = 2,
                             IdGroup = 0,
                             IdUser = 4,
-                            dateTime = new DateTime(2023, 8, 14, 18, 40, 28, 253, DateTimeKind.Local).AddTicks(8505)
+                            ImageOnline = "https://i.ibb.co/TLwP87r/images-q-tbn-ANd9-Gc-RORohfl-KFF8s-AWbp-SXCwb3-Ms-Ds-Pl-Ju-Zyb-THw-s.jpg",
+                            dateTime = new DateTime(2024, 12, 29, 18, 24, 14, 26, DateTimeKind.Local).AddTicks(7913)
                         },
                         new
                         {
@@ -4320,7 +4336,8 @@ namespace GraduationProjectAPI.Migrations
                             IdContent = 2,
                             IdGroup = 0,
                             IdUser = 5,
-                            dateTime = new DateTime(2023, 8, 14, 18, 40, 28, 253, DateTimeKind.Local).AddTicks(8516)
+                            ImageOnline = "https://i.ibb.co/fxpkbDm/images-q-tbn-ANd9-Gc-T4en1-Ri-Vtz-Yv6e-Jmuri7-O0-QW4-LRo9-Vgg-I0x-A-s.jpg",
+                            dateTime = new DateTime(2024, 12, 29, 18, 24, 14, 26, DateTimeKind.Local).AddTicks(7921)
                         },
                         new
                         {
@@ -4329,7 +4346,8 @@ namespace GraduationProjectAPI.Migrations
                             IdContent = 2,
                             IdGroup = 2,
                             IdUser = 2,
-                            dateTime = new DateTime(2023, 8, 14, 18, 40, 28, 253, DateTimeKind.Local).AddTicks(8527)
+                            ImageOnline = "https://i.ibb.co/BL5BXgK/images-q-tbn-ANd9-Gc-SPjgo-Jxn1y-R7-MDYLFWl-z4-IC2-Nl-Ue-Ynv-Ngw-s.jpg",
+                            dateTime = new DateTime(2024, 12, 29, 18, 24, 14, 26, DateTimeKind.Local).AddTicks(7928)
                         },
                         new
                         {
@@ -4338,7 +4356,8 @@ namespace GraduationProjectAPI.Migrations
                             IdContent = 2,
                             IdGroup = 2,
                             IdUser = 3,
-                            dateTime = new DateTime(2023, 8, 14, 18, 40, 28, 253, DateTimeKind.Local).AddTicks(8537)
+                            ImageOnline = "https://i.ibb.co/m4bvDmn/images-q-tbn-ANd9-Gc-QIe-Gx5-RXZ9-IOLA3-Vd-Qdj-Jja-QN5-PPMHIu-ITQ-s.jpg",
+                            dateTime = new DateTime(2024, 12, 29, 18, 24, 14, 26, DateTimeKind.Local).AddTicks(7963)
                         },
                         new
                         {
@@ -4347,7 +4366,8 @@ namespace GraduationProjectAPI.Migrations
                             IdContent = 2,
                             IdGroup = 2,
                             IdUser = 4,
-                            dateTime = new DateTime(2023, 8, 14, 18, 40, 28, 253, DateTimeKind.Local).AddTicks(8548)
+                            ImageOnline = "https://i.ibb.co/Drxh9D0/images-q-tbn-ANd9-Gc-Qqr-Tv-W9-VXykz-Ty-Cn-fb5-PKb-Aahf5-LZ50-Lb-FA-s.jpg",
+                            dateTime = new DateTime(2024, 12, 29, 18, 24, 14, 26, DateTimeKind.Local).AddTicks(7972)
                         },
                         new
                         {
@@ -4356,7 +4376,8 @@ namespace GraduationProjectAPI.Migrations
                             IdContent = 2,
                             IdGroup = 2,
                             IdUser = 5,
-                            dateTime = new DateTime(2023, 8, 14, 18, 40, 28, 253, DateTimeKind.Local).AddTicks(8558)
+                            ImageOnline = "https://i.ibb.co/CK7mrWp/images-q-tbn-ANd9-Gc-RBH7j95w-TEy-To2-Yk-Ax-l5-OUBKBl-OV6pm8-Q-s.jpg",
+                            dateTime = new DateTime(2024, 12, 29, 18, 24, 14, 26, DateTimeKind.Local).AddTicks(7979)
                         },
                         new
                         {
@@ -4365,7 +4386,8 @@ namespace GraduationProjectAPI.Migrations
                             IdContent = 3,
                             IdGroup = 0,
                             IdUser = 2,
-                            dateTime = new DateTime(2023, 8, 14, 18, 40, 28, 253, DateTimeKind.Local).AddTicks(8569)
+                            ImageOnline = "https://i.ibb.co/QmL8M58/images-q-tbn-ANd9-Gc-TARvz-P4c87n-Sc3-NAEi-S7h-N9-NPyd-WKib8i-T4-A-s.jpg",
+                            dateTime = new DateTime(2024, 12, 29, 18, 24, 14, 26, DateTimeKind.Local).AddTicks(7986)
                         },
                         new
                         {
@@ -4374,7 +4396,8 @@ namespace GraduationProjectAPI.Migrations
                             IdContent = 3,
                             IdGroup = 0,
                             IdUser = 3,
-                            dateTime = new DateTime(2023, 8, 14, 18, 40, 28, 253, DateTimeKind.Local).AddTicks(8580)
+                            ImageOnline = "https://i.ibb.co/gwfdm3v/images-q-tbn-ANd9-Gc-Tf-Sd-Tn-GYo-Usp-BMo9-O2-Gc-VKj-CMO0-Uh1nmk-N1w-s.jpg",
+                            dateTime = new DateTime(2024, 12, 29, 18, 24, 14, 26, DateTimeKind.Local).AddTicks(7993)
                         },
                         new
                         {
@@ -4383,7 +4406,8 @@ namespace GraduationProjectAPI.Migrations
                             IdContent = 3,
                             IdGroup = 0,
                             IdUser = 4,
-                            dateTime = new DateTime(2023, 8, 14, 18, 40, 28, 253, DateTimeKind.Local).AddTicks(8591)
+                            ImageOnline = "https://i.ibb.co/vVp4VzG/images-q-tbn-ANd9-Gc-Rkmc-W2v-ML6h-1-Yg8-RE2-Hg-Zu-E8-Kw6k-Tc-Z137w-s.jpg",
+                            dateTime = new DateTime(2024, 12, 29, 18, 24, 14, 26, DateTimeKind.Local).AddTicks(8001)
                         },
                         new
                         {
@@ -4392,7 +4416,8 @@ namespace GraduationProjectAPI.Migrations
                             IdContent = 3,
                             IdGroup = 0,
                             IdUser = 5,
-                            dateTime = new DateTime(2023, 8, 14, 18, 40, 28, 253, DateTimeKind.Local).AddTicks(8601)
+                            ImageOnline = "https://i.ibb.co/YWjxCXv/images-q-tbn-ANd9-Gc-Tu5t7j-Sn-kr-C8-Efd-IXFy-Yr4n-urcl-Hf-Wdp4-Q-s.jpg",
+                            dateTime = new DateTime(2024, 12, 29, 18, 24, 14, 26, DateTimeKind.Local).AddTicks(8008)
                         },
                         new
                         {
@@ -4401,7 +4426,8 @@ namespace GraduationProjectAPI.Migrations
                             IdContent = 3,
                             IdGroup = 3,
                             IdUser = 2,
-                            dateTime = new DateTime(2023, 8, 14, 18, 40, 28, 253, DateTimeKind.Local).AddTicks(8612)
+                            ImageOnline = "https://i.ibb.co/2gkLWn8/images-q-tbn-ANd9-Gc-QC2ab6-XMXlj-8-Vh3g-VH3r-ZRAwjcjlqo-EPw-s.jpg",
+                            dateTime = new DateTime(2024, 12, 29, 18, 24, 14, 26, DateTimeKind.Local).AddTicks(8016)
                         },
                         new
                         {
@@ -4410,7 +4436,8 @@ namespace GraduationProjectAPI.Migrations
                             IdContent = 3,
                             IdGroup = 3,
                             IdUser = 3,
-                            dateTime = new DateTime(2023, 8, 14, 18, 40, 28, 253, DateTimeKind.Local).AddTicks(8623)
+                            ImageOnline = "https://i.ibb.co/0CnFs85/images-q-tbn-ANd9-Gc-Rkcx-1-KTBm3-p-SAtz-Cb8-Dbci4-QVc-MJ8-Ged-PQ-s.jpg",
+                            dateTime = new DateTime(2024, 12, 29, 18, 24, 14, 26, DateTimeKind.Local).AddTicks(8023)
                         },
                         new
                         {
@@ -4419,7 +4446,8 @@ namespace GraduationProjectAPI.Migrations
                             IdContent = 3,
                             IdGroup = 3,
                             IdUser = 4,
-                            dateTime = new DateTime(2023, 8, 14, 18, 40, 28, 253, DateTimeKind.Local).AddTicks(8633)
+                            ImageOnline = "https://i.ibb.co/W2bgDHp/images-q-tbn-ANd9-Gc-Qf-YZFRrsfia-Ja-Ly-MP2eb-BLy-DJMdtbu-E44ka-A-s.png",
+                            dateTime = new DateTime(2024, 12, 29, 18, 24, 14, 26, DateTimeKind.Local).AddTicks(8030)
                         },
                         new
                         {
@@ -4428,7 +4456,8 @@ namespace GraduationProjectAPI.Migrations
                             IdContent = 3,
                             IdGroup = 3,
                             IdUser = 5,
-                            dateTime = new DateTime(2023, 8, 14, 18, 40, 28, 253, DateTimeKind.Local).AddTicks(8644)
+                            ImageOnline = "https://i.ibb.co/kcBGpyJ/images-q-tbn-ANd9-Gc-TH7-LLr3-Yv5-GJfe-B5n-ARhsr-B3-Azoqnf-QLb-V6-Q-s.jpg",
+                            dateTime = new DateTime(2024, 12, 29, 18, 24, 14, 26, DateTimeKind.Local).AddTicks(8037)
                         },
                         new
                         {
@@ -4437,7 +4466,8 @@ namespace GraduationProjectAPI.Migrations
                             IdContent = 4,
                             IdGroup = 0,
                             IdUser = 2,
-                            dateTime = new DateTime(2023, 8, 14, 18, 40, 28, 253, DateTimeKind.Local).AddTicks(8655)
+                            ImageOnline = "https://i.ibb.co/pKbKCFB/images-q-tbn-ANd9-Gc-QR4q8-OUDk-OYe-GIs0-Oa44-Uth-A-ZFLtq5eqy-YQ-s.png",
+                            dateTime = new DateTime(2024, 12, 29, 18, 24, 14, 26, DateTimeKind.Local).AddTicks(8044)
                         },
                         new
                         {
@@ -4446,7 +4476,8 @@ namespace GraduationProjectAPI.Migrations
                             IdContent = 4,
                             IdGroup = 0,
                             IdUser = 3,
-                            dateTime = new DateTime(2023, 8, 14, 18, 40, 28, 253, DateTimeKind.Local).AddTicks(8666)
+                            ImageOnline = "https://i.ibb.co/T4K2bbx/images-q-tbn-ANd9-Gc-Rqu-J0-JYPrc10-Laeh-JFzgl-Vdotdn3-Bx-IT07-Zg-s.jpg",
+                            dateTime = new DateTime(2024, 12, 29, 18, 24, 14, 26, DateTimeKind.Local).AddTicks(8051)
                         },
                         new
                         {
@@ -4455,7 +4486,8 @@ namespace GraduationProjectAPI.Migrations
                             IdContent = 4,
                             IdGroup = 0,
                             IdUser = 4,
-                            dateTime = new DateTime(2023, 8, 14, 18, 40, 28, 253, DateTimeKind.Local).AddTicks(8676)
+                            ImageOnline = "https://i.ibb.co/NKXCNCr/images-q-tbn-ANd9-Gc-R3-Rzq-Exfg-P81904m-Nutu6l-XF-QVVNvpdrrcw-s.jpg",
+                            dateTime = new DateTime(2024, 12, 29, 18, 24, 14, 26, DateTimeKind.Local).AddTicks(8058)
                         },
                         new
                         {
@@ -4464,7 +4496,8 @@ namespace GraduationProjectAPI.Migrations
                             IdContent = 4,
                             IdGroup = 0,
                             IdUser = 5,
-                            dateTime = new DateTime(2023, 8, 14, 18, 40, 28, 253, DateTimeKind.Local).AddTicks(8686)
+                            ImageOnline = "https://i.ibb.co/c871rk0/images-q-tbn-ANd9-Gc-R9c-Yn8-Y9k0-RBx-H0l-Pu3-Ys7-C5f-288cwvads-A-s.jpg",
+                            dateTime = new DateTime(2024, 12, 29, 18, 24, 14, 26, DateTimeKind.Local).AddTicks(8065)
                         },
                         new
                         {
@@ -4473,7 +4506,8 @@ namespace GraduationProjectAPI.Migrations
                             IdContent = 4,
                             IdGroup = 4,
                             IdUser = 2,
-                            dateTime = new DateTime(2023, 8, 14, 18, 40, 28, 253, DateTimeKind.Local).AddTicks(8731)
+                            ImageOnline = "https://i.ibb.co/txX97yK/images-q-tbn-ANd9-Gc-RU48-LUUzj-j-Eg-FU3x-Aq-Ze7rr-Tlc3jbp-Es-Qcg-s.jpg",
+                            dateTime = new DateTime(2024, 12, 29, 18, 24, 14, 26, DateTimeKind.Local).AddTicks(8073)
                         },
                         new
                         {
@@ -4482,7 +4516,8 @@ namespace GraduationProjectAPI.Migrations
                             IdContent = 4,
                             IdGroup = 4,
                             IdUser = 3,
-                            dateTime = new DateTime(2023, 8, 14, 18, 40, 28, 253, DateTimeKind.Local).AddTicks(8744)
+                            ImageOnline = "https://i.ibb.co/JFNGGw4/images-q-tbn-ANd9-Gc-Sh4-J-1o0u-OQDY22-BOX1-DTSi76os-KCsn-Euy-Cg-s.png",
+                            dateTime = new DateTime(2024, 12, 29, 18, 24, 14, 26, DateTimeKind.Local).AddTicks(8080)
                         },
                         new
                         {
@@ -4491,7 +4526,8 @@ namespace GraduationProjectAPI.Migrations
                             IdContent = 4,
                             IdGroup = 4,
                             IdUser = 4,
-                            dateTime = new DateTime(2023, 8, 14, 18, 40, 28, 253, DateTimeKind.Local).AddTicks(8755)
+                            ImageOnline = "https://i.ibb.co/qFxBC4j/images-q-tbn-ANd9-Gc-Sgw-Jj-CVXTu-Cx-Re-Qm-KZju-Yzvk-LY0-N0-Fx-T4w-s.jpg",
+                            dateTime = new DateTime(2024, 12, 29, 18, 24, 14, 26, DateTimeKind.Local).AddTicks(8087)
                         },
                         new
                         {
@@ -4500,79 +4536,8 @@ namespace GraduationProjectAPI.Migrations
                             IdContent = 4,
                             IdGroup = 4,
                             IdUser = 5,
-                            dateTime = new DateTime(2023, 8, 14, 18, 40, 28, 253, DateTimeKind.Local).AddTicks(8765)
-                        },
-                        new
-                        {
-                            Id = 34,
-                            Description = "Snow is a type of deposition in which water droplets are frozen in the form of ice crystals with various hexagonal shapes",
-                            IdContent = 5,
-                            IdGroup = 0,
-                            IdUser = 2,
-                            dateTime = new DateTime(2023, 8, 14, 18, 40, 28, 253, DateTimeKind.Local).AddTicks(8776)
-                        },
-                        new
-                        {
-                            Id = 35,
-                            Description = "A cold front is the dividing line between two masses of air, one warm and the other cold, heading towards the warm and pushing under it",
-                            IdContent = 5,
-                            IdGroup = 0,
-                            IdUser = 3,
-                            dateTime = new DateTime(2023, 8, 14, 18, 40, 28, 253, DateTimeKind.Local).AddTicks(8788)
-                        },
-                        new
-                        {
-                            Id = 36,
-                            Description = "Did you know that the duration of each cycle of the sun around itself is 24 days and three quarters",
-                            IdContent = 5,
-                            IdGroup = 0,
-                            IdUser = 4,
-                            dateTime = new DateTime(2023, 8, 14, 18, 40, 28, 253, DateTimeKind.Local).AddTicks(8799)
-                        },
-                        new
-                        {
-                            Id = 37,
-                            Description = "Absolute zero is the temperature of (162, 273 °) Celsius at which molecular motion vanishes and the body loses its thermal energy",
-                            IdContent = 5,
-                            IdGroup = 0,
-                            IdUser = 5,
-                            dateTime = new DateTime(2023, 8, 14, 18, 40, 28, 253, DateTimeKind.Local).AddTicks(8809)
-                        },
-                        new
-                        {
-                            Id = 38,
-                            Description = "Giraffe neck The length of the giraffe's neck can reach more than 13.2 meters and contains the same number of vertebrae as the human neck, i.e. there are seven vertebrae in the giraffe's neck, and the length of each vertebra can exceed more than 25 cm",
-                            IdContent = 5,
-                            IdGroup = 5,
-                            IdUser = 2,
-                            dateTime = new DateTime(2023, 8, 14, 18, 40, 28, 253, DateTimeKind.Local).AddTicks(8819)
-                        },
-                        new
-                        {
-                            Id = 39,
-                            Description = "The duration of the land of round about itself : The land that spirves around the same (1000) miles per hour along the tropical surroundings, in every 23 hours, and (56) minutes.",
-                            IdContent = 5,
-                            IdGroup = 5,
-                            IdUser = 3,
-                            dateTime = new DateTime(2023, 8, 14, 18, 40, 28, 253, DateTimeKind.Local).AddTicks(8829)
-                        },
-                        new
-                        {
-                            Id = 40,
-                            Description = "The duration of the land of the ground around the sun : The duration of the land of the ground around the sun is only one time, [1/4 365] days.",
-                            IdContent = 5,
-                            IdGroup = 5,
-                            IdUser = 4,
-                            dateTime = new DateTime(2023, 8, 14, 18, 40, 28, 253, DateTimeKind.Local).AddTicks(8839)
-                        },
-                        new
-                        {
-                            Id = 41,
-                            Description = "The oldest woman in the world is Maria Branyas Moreira, who is 115 years and 329 days old",
-                            IdContent = 5,
-                            IdGroup = 5,
-                            IdUser = 5,
-                            dateTime = new DateTime(2023, 8, 14, 18, 40, 28, 253, DateTimeKind.Local).AddTicks(8850)
+                            ImageOnline = "https://i.ibb.co/LZKv73q/images-q-tbn-ANd9-Gc-S9-O4-MIX7xl-GVVk6v01c2-Yf1-VFxib-Ys-Ls-Yf-Q-s.jpg",
+                            dateTime = new DateTime(2024, 12, 29, 18, 24, 14, 26, DateTimeKind.Local).AddTicks(8093)
                         });
                 });
 

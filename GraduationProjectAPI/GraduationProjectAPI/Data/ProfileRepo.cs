@@ -88,6 +88,7 @@ namespace GraduationProjectAPI.Data
                                 postDto.UserImage = user.Image;
                                 postDto.GroupName = null;
                                 postDto.GroupImage = null;
+                              
                                 postDto.Interaction = up.Interaction;
                                 postDto.NumberLike = NumberLikes(p.Id);
                                 postDto.post = p;
@@ -100,7 +101,8 @@ namespace GraduationProjectAPI.Data
                                 postDto.UserImage = user.Image;
                                 postDto.GroupName = group.groupName;
                                 postDto.GroupImage = group.Image;
-                                postDto.Interaction = up.Interaction;
+                                postDto.GroupImageOnline = group.ImageOnline;
+                              postDto.Interaction = up.Interaction;
                                 postDto.NumberLike = NumberLikes(p.Id);
                                 postDto.post = p;
                                 dto.Add(postDto);
@@ -126,6 +128,7 @@ namespace GraduationProjectAPI.Data
                                 postDto.UserImage = user.Image;
                                 postDto.GroupName = group.groupName;
                                 postDto.GroupImage = group.Image;
+                                postDto.GroupImageOnline = group.ImageOnline;
                                 postDto.Interaction = false;
                                 postDto.NumberLike = NumberLikes(p.Id);
                                 postDto.post = p;
@@ -157,8 +160,10 @@ namespace GraduationProjectAPI.Data
                 PostDto postDto = new PostDto();
                 postDto.UserName =u.UserName;
                 postDto.UserImage = u.Image;
+
                 postDto.GroupName = g.groupName;
                 postDto.GroupImage = g.Image;
+                postDto.GroupImageOnline = g.ImageOnline;
                 postDto.Interaction = _db.UserPosts.FirstOrDefault(n => n.IdUser == IdUser && n.IdPost == p.Id).Interaction;
                 postDto.NumberLike = NumberLikes(p.Id);
                 postDto.post = p;
