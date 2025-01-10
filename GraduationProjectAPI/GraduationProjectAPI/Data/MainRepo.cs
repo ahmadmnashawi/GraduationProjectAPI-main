@@ -99,7 +99,8 @@ namespace GraduationProjectAPI.Data
                       // dto.UserImageOnline = e.Post.User.Image;
                         dto.UserImage =us.Image;
                         dto.Interaction = interaction.Interaction;
-                       // dto.Name = e.Post.User.Name;
+                        dto.UserPostId = interaction.Id;
+                        // dto.Name = e.Post.User.Name;
                         dto.UserName = us.UserName;
                         dto.NumberLike = NumberLikes(e.Id);
                         dto.GroupName = null;
@@ -136,6 +137,7 @@ namespace GraduationProjectAPI.Data
                         // dto.Image = e.Post.User.Image;
                         dto.UserImage = us.Image;
                         dto.Interaction = interaction.Interaction;
+                        dto.UserPostId = interaction.Id;
                         // dto.Name = e.Post.User.Name;
                         dto.UserName = us.UserName;
                         dto.NumberLike = NumberLikes(e.Id);

@@ -67,6 +67,10 @@ namespace GraduationProjectAPI.Data
                     return true;
                 }
             }
+            else
+            {
+                Update(group);
+            }
             return false;
         }
         public void Update(Group group)
@@ -127,6 +131,7 @@ namespace GraduationProjectAPI.Data
                         postDto.GroupImage = data.Image;
                         postDto.GroupName = data.groupName;
                         postDto.Interaction = us.Interaction;
+                        postDto.UserPostId = us.Id;
                         postDto.NumberLike = NumberLikes(p.Id);
                         postDto.post = p;
                         postDto.UserImage = u.Image;

@@ -5,6 +5,7 @@ namespace GraduationProjectAPI.Dto
     {
         public Post post { set; get; }
         public bool Interaction { get; set; }
+        public int UserPostId { get; set; }
         public string UserName { get; set; }
         public string GroupName { get; set; }
         public double NumberLike { get; set; }

@@ -97,7 +97,7 @@ namespace GraduationProjectAPI.Controllers
         {
             if (IdPost != 0)
             {
-                var data = db.commentDtos(IdPost);
+                var data = db.CommentDtos(IdPost);
                 if (data != null)
                 {
                     return Ok(data);

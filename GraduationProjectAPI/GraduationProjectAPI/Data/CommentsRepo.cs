@@ -48,7 +48,7 @@ namespace GraduationProjectAPI.Data
             var Comment = _db.Comments.First(p => p.Id == comment.Id);
             if (Comment != null)
             {
-                Comment.comment = comment.comment;
+                Comment.Comment = comment.Comment;
                 Comment.IdPost = comment.IdPost;
                 Comment.IdUser = comment.IdUser;
                 _db.SaveChanges();
@@ -63,20 +63,19 @@ namespace GraduationProjectAPI.Data
             }
             else return null;
         }
-        public List<CommentDto> commentDtos(int IdPost)
+        public List<CommentDto> CommentDtos(int IdPost)
         {
-            List<Comments> comments = _db.Comments.Where(p => p.IdPost == IdPost).Include(p => p.User).ToList();
+            List<Comments> comments = _db.Comments.Where(p => p.IdPost == IdPost).ToList();
             if (comments.Count != 0)
             {
-                CommentDto data = new CommentDto();
-                List<CommentDto> dto = new List<CommentDto>();
+
+        
+              var dto = new List<CommentDto>();
                 foreach(Comments c in comments)
                 {
-                    User u = _db.Users.FirstOrDefault(p => p.Id == c.IdUser);
-                    data.comment = c;
-                    data.UserImage = u.Image;
-                    data.UserName = u.UserName;
-                    dto.Add(data);
+                    var u = _db.Users.FirstOrDefault(p => p.Id == c.IdUser);
+                    dto.Add(new CommentDto { Comment=c,UserImage=u.Image,UserName=u.UserName});
+
                 }
                 return dto;
             }

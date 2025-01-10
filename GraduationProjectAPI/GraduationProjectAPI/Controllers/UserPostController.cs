@@ -51,15 +51,24 @@ namespace GraduationProjectAPI.Controllers
         [HttpPut]
         public IActionResult Put([FromBody] UserPost userPost)
         {
-            if (userPost == null || userPost.Id == 0)
+            if (userPost == null )
             {
+             
                // return BadRequest();
                 return Ok(new List<object>());
             }
             else
             {
-                db.Update(userPost);
-                return Ok();
+                if (userPost.Id == 0)
+                {
+                    db.Save(userPost);
+                    return Ok();
+                }
+                else
+                {
+                    db.Update(userPost);
+                    return Ok();
+                }
             }
         }
         [HttpDelete]

@@ -10,6 +10,6 @@ namespace GraduationProjectAPI.Infrastructure
         public void Update(Comments comment);
         public void Delete(Comments comment);
         public List<Comments> PostComments(int IdPost);
-        public List<CommentDto> commentDtos(int IdPost);
+        public List<CommentDto> CommentDtos(int IdPost);
     }
 }

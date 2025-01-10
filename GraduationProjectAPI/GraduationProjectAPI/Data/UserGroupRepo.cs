@@ -34,13 +34,23 @@ namespace GraduationProjectAPI.Data
         }
         public bool Save(UserGroup userGroup)
         {
-            if (userGroup.Id == 0)
+            if (!IsExisting(userGroup))
             {
-                if (!IsExisting(userGroup))
+                if (userGroup.Id == 0)
                 {
+
                     _db.UserGroups.Add(userGroup);
                     _db.SaveChanges();
                     return true;
+                }
+            }
+            else
+            {
+                var UserGroup = _db.UserGroups.FirstOrDefault(p => p.IdUser == userGroup.IdUser && p.IdGroup == userGroup.IdGroup);
+                if (UserGroup != null)
+                {
+                    _db.UserGroups.Remove(UserGroup);
+                    _db.SaveChanges();
                 }
             }
             return false;
@@ -58,11 +68,7 @@ namespace GraduationProjectAPI.Data
         public bool IsExisting(UserGroup userGroup)
         {
             var data = _db.UserGroups.Any(p => p.IdGroup == userGroup.IdGroup && p.IdUser == userGroup.IdUser);
-            if (data != true)
-            {
-                return false;
-            }
-            else return true;
+            return data;
         }
     }
 }
