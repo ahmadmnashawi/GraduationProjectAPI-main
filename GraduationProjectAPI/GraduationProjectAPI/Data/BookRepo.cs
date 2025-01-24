@@ -33,18 +33,19 @@ namespace GraduationProjectAPI.Data
                 return null;
 
         }
-        public bool Save(Book book)
+        public int Save(Book book)
         {
             if (book.Id == 0)
             {
                 if (!IsExisting(book))
                 {
-                    _db.Books.Add(book);
-                    _db.SaveChanges();
-                    return true;
+                    var result = _db.Books.Add(book);
+                     _db.SaveChanges();
+                    var id = _db.Books.Where(t => t.BookName == book.BookName && t.IdBookType == book.IdBookType&& t.BookPrice == book.BookPrice).First().Id;
+                    return id;
                 }
             }
-            return false;
+            return 0;
         }
         public void Update(Book book)
         {

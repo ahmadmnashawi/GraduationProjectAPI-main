@@ -6,7 +6,7 @@ namespace GraduationProjectAPI.Infrastructure
     {
         public Book GetBook(int id);
         public IQueryable<Book> GetBooks { get; }
-        public bool Save(Book book);
+        public int Save(Book book);
         public void Update(Book book);
         public void Delete(Book book);
         public BookDetailsDto BookDetails(int IdBook);

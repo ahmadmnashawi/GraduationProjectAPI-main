@@ -47,7 +47,7 @@ namespace GraduationProjectAPI.Data
             {
                 Complaint.complaint = complaint.complaint;
                 Complaint.IdUser = complaint.IdUser;
-                complaint.type = complaint.type;
+                Complaint.type = complaint.type;
                 _db.SaveChanges();
             }
         }

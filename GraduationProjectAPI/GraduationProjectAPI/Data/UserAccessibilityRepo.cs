@@ -12,10 +12,21 @@ namespace GraduationProjectAPI.Data
         }
         public IQueryable<UserAccessibility> GetUserAccessibilities => _db.UserAccessibilities;
 
-        public void Delete(UserAccessibility UserAccessibility)
+        public void Delete(int  idAccessibility,int idUser,string type,int id)
         {
-            var userAccessibility = _db.UserAccessibilities.FirstOrDefault(p => p.Id == UserAccessibility.Id);
-            if (userAccessibility != null)
+            UserAccessibility? userAccessibility;
+            if (type == "Group") {
+                 userAccessibility = _db.UserAccessibilities.FirstOrDefault(p => p.IdAccessibility == idAccessibility && p.IdUser == idUser&&p.IdGroup==id);
+            }
+            else if (type == "Library") { 
+                userAccessibility = _db.UserAccessibilities.FirstOrDefault(p => p.IdAccessibility == idAccessibility && p.IdUser == idUser && p.IdLibrary == id);
+            } else if (type == "Test") {
+                userAccessibility = _db.UserAccessibilities.FirstOrDefault(p => p.IdAccessibility == idAccessibility && p.IdUser == idUser && p.IdTest == id); 
+            } else if(type == "Reference") {
+                userAccessibility = _db.UserAccessibilities.FirstOrDefault(p => p.IdAccessibility == idAccessibility && p.IdUser == idUser && p.IdReference == id);
+            } else { userAccessibility =new UserAccessibility(); }
+             
+            if (userAccessibility !=null)
             {
                 _db.UserAccessibilities.Remove(userAccessibility);
                 _db.SaveChanges();

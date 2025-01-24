@@ -12,9 +12,9 @@ namespace GraduationProjectAPI.Data
         }
         public IQueryable<Reference> GetReferences => _db.References;
 
-        public void Delete(Reference reference)
+        public void Delete(int  idReference)
         {
-            var Reference = _db.References.FirstOrDefault(p => p.Id == reference.Id);
+            var Reference = _db.References.FirstOrDefault(p => p.Id == idReference);
             if (Reference != null)
             {
                 var userRefre = _db.UserReferences.Where(p => p.IdReference == Reference.Id).ToList();
@@ -32,7 +32,7 @@ namespace GraduationProjectAPI.Data
                         _db.SaveChanges();
                     }
                 }
-                _db.References.Remove(reference);
+                _db.References.Remove(Reference);
                 _db.SaveChanges();
             }
 

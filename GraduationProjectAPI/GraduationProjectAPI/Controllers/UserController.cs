@@ -50,10 +50,10 @@ namespace GraduationProjectAPI.Controllers
                 return Ok();
             }
         }
-        [HttpDelete]
-        public IActionResult Delete([FromQuery] User user)
+        [HttpDelete("{idUser}")]
+        public IActionResult Delete( int idUser)
         {
-            db.Delete(user);
+            db.Delete(idUser);
             return Ok();
         }
         [HttpGet]

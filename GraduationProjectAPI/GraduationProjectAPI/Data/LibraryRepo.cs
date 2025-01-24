@@ -11,9 +11,9 @@ namespace GraduationProjectAPI.Data
         }
         public IQueryable<Library> GetLibraries => _db.Libraries;
 
-        public void Delete(Library Library)
+        public void Delete(int IdLibrary)
         {
-            var library = _db.Libraries.FirstOrDefault(p => p.Id == Library.Id);
+            var library = _db.Libraries.FirstOrDefault(p => p.Id == IdLibrary);
             if (library != null)
             {
                 var bookLibrary = _db.BookLibraries.Where(p => p.IdLibrary == library.Id).ToList();
@@ -143,11 +143,11 @@ namespace GraduationProjectAPI.Data
             var library = _db.Libraries.FirstOrDefault(p => p.Id == IdLibrary);
             if(library!= null)
             {
-                List<BookLibrary> bookLibraries = _db.BookLibraries.Where(p => p.IdLibrary == IdLibrary && p.IsDeleted == false).ToList();
+                List<BookLibrary> bookLibraries = _db.BookLibraries.Where(p => p.IdLibrary == IdLibrary ).ToList();
                 foreach(BookLibrary e in bookLibraries)
                 {
-                    Book b = _db.Books.FirstOrDefault(p => p.Id == e.IdBook && p.IsDeleted == false);
-                    BookType bookType = _db.BookTypes.FirstOrDefault(p => p.Id == b.IdBookType && p.IsDeleted == false);
+                    var b = _db.Books.Where(t=>t.Id==e.IdBook).First();
+                    BookType bookType = _db.BookTypes.Where(t => t.Id == b.IdBookType).First();
                     if(! data.Contains(bookType))
                     {
                         data.Add(bookType);
@@ -155,11 +155,11 @@ namespace GraduationProjectAPI.Data
                 }
                 if(data.Count != 0)
                 {
-                    return data;
+                    return _db.BookTypes.ToList();
                 }
                 else
                 {
-                    return null;
+                    return _db.BookTypes.ToList();
                 }
             }
             else

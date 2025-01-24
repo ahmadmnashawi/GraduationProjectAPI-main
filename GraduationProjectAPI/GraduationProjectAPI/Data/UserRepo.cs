@@ -11,9 +11,9 @@ namespace GraduationProjectAPI.Data
         }
         public IQueryable<User> GetUsers => _db.Users;
 
-        public void Delete(User User)
+        public void Delete(int idUser)
         {
-            var user = _db.Users.FirstOrDefault(p => p.Id == User.Id);
+            var user = _db.Users.FirstOrDefault(p => p.Id ==  idUser);
             if (user != null)
             {
                 var userRefre = _db.UserReferences.Where(p => p.IdUser == user.Id).ToList();

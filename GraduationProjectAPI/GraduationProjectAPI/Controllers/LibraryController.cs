@@ -62,10 +62,10 @@ namespace GraduationProjectAPI.Controllers
                 return Ok();
             }
         }
-        [HttpDelete]
-        public IActionResult Delete([FromQuery] Library library)
+        [HttpDelete("IdLibrary")]
+        public IActionResult Delete([FromQuery] int IdLibrary)
         {
-            db.Delete(library);
+            db.Delete(IdLibrary);
             return Ok();
         }
         [HttpGet]
@@ -149,7 +149,7 @@ namespace GraduationProjectAPI.Controllers
                 }
                 else
                 {
-                    return NotFound();
+              
                     return Ok(new List<object>());
                 }
             }

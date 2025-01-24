@@ -63,9 +63,9 @@ namespace GraduationProjectAPI.Controllers
             }
         }
         [HttpDelete]
-        public IActionResult Delete([FromQuery] UserAccessibility userAccessibility)
+        public IActionResult Delete([FromQuery] int idAc,int idUser,string type, int id)
         {
-            db.Delete(userAccessibility);
+            db.Delete(idAc, idUser, type, id);
             return Ok();
         }
         [HttpGet]
