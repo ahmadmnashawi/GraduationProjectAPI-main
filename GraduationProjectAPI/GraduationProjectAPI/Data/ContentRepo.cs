@@ -79,7 +79,7 @@ using GraduationProjectAPI.Model;
         }
         public bool IsExisting(Content content)
         {
-            var data = _db.Contents.Any(p => p.typeName.Equals(content.typeName));
+            var data = _db.Contents.Any(p => p.typeName==content.typeName);
             // var data = _db.Contents.Where(u => string.Equals(u.typeName, content.typeName, StringComparison.CurrentCultureIgnoreCase));
             if (data == false)
             {

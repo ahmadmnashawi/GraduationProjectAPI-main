@@ -49,7 +49,7 @@ namespace GraduationProjectAPI.Data
         }
         public Group GetGroup(int id)
         {
-            var group = _db.Groups.FirstOrDefault(p => p.Id == id);
+            var group = _db.Groups.Include(t=>t.Content).FirstOrDefault(p => p.Id == id);
             if (group != null)
                 return group;
             else
@@ -98,7 +98,7 @@ namespace GraduationProjectAPI.Data
         }
         public List<User> GetGroupMembers(int IdGroup)
         {
-            var data = _db.Groups.FirstOrDefault(p => p.Id == IdGroup);
+            var data = _db.Groups.Include(t => t.Content).FirstOrDefault(p => p.Id == IdGroup);
             if (data != null)
             {
                 List<User> users = new List<User>();
@@ -131,6 +131,7 @@ namespace GraduationProjectAPI.Data
                         postDto.GroupImage = data.Image;
                         postDto.GroupName = data.groupName;
                         postDto.Interaction = us.Interaction;
+                     
                         postDto.UserPostId = us.Id;
                         postDto.NumberLike = NumberLikes(p.Id);
                         postDto.post = p;

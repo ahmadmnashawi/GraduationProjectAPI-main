@@ -54,7 +54,7 @@ namespace GraduationProjectAPI.Data
            foreach(UserGroup g in Usergroups)
            {
                 //    var groupPost = _db.Posts.Where(p => p.IdGroup == g.Id).SelectMany(t=>t.Comment).Include(r=>r.Post).ToList();
-                var groupPost = _db.Posts.Where(p => p.IdGroup == g.IdGroup && p.IdUser != idUser).Include(R=>R.Comment).Include(r => r.Group).ToList();
+                var groupPost = _db.Posts.Where(p => p.IdGroup == g.IdGroup && p.IdUser != idUser).Include(t => t.Content).Include(R=>R.Comment).Include(r => r.Group).ToList();
                 posts.AddRange(groupPost);
             }
            
@@ -64,7 +64,7 @@ namespace GraduationProjectAPI.Data
             foreach (Group g in groups)
             {
                 //    var groupPost = _db.Posts.Where(p => p.IdGroup == g.Id).SelectMany(t=>t.Comment).Include(r=>r.Post).ToList();
-                var groupPost = _db.Posts.Where(p => p.IdGroup == g.Id && p.IdUser != idUser).Include(R => R.Comment).Include(r => r.Group).ToList();
+                var groupPost = _db.Posts.Where(p => p.IdGroup == g.Id && p.IdUser != idUser).Include(t => t.Content).Include(R => R.Comment).Include(r => r.Group).ToList();
                
                     posts.AddRange(groupPost);
      
@@ -77,7 +77,7 @@ namespace GraduationProjectAPI.Data
             {
                 // var userPost = _db.Users.Where(p => p.Id == f.followedId).SelectMany(p => p.Post.SelectMany(t=>t.Comment)).ToList();
                 //  var data = _db.Posts.Where(p => p.IdUser == f.followedId).SelectMany(p => p.Comment).Include(r => r.Post).ToList();
-                var data = _db.Posts.Where(p => p.IdUser == f.followedId && p.IdGroup==0).Include(r => r.Comment).ToList();
+                var data = _db.Posts.Where(p => p.IdUser == f.followedId && p.IdGroup==0).Include(t => t.Content).Include(r => r.Comment).ToList();
                 posts.AddRange(data);
             }
          
@@ -95,7 +95,9 @@ namespace GraduationProjectAPI.Data
                     User us = _db.Users.FirstOrDefault(p => p.Id == e.IdUser);
                     if (interaction != null)
                     {
+                        var content=_db.Contents.FirstOrDefault(p => p.Id == e.IdContent);
                         dto.post = e;
+                        dto.post.Content = content;
                       // dto.UserImageOnline = e.Post.User.Image;
                         dto.UserImage =us.Image;
                         dto.Interaction = interaction.Interaction;
@@ -110,11 +112,12 @@ namespace GraduationProjectAPI.Data
                     }
                     else
                     {
-                        
+                        var content = _db.Contents.FirstOrDefault(p => p.Id == e.IdContent);
                         dto.post = e;
                         //     dto.Image = e.Post.User.Image;
                         dto.UserImage = us.Image;
                         dto.Interaction = false;
+                        dto.post.Content = content;
                         // dto.Name = e.Post.User.Name;
                         dto.UserName = us.UserName;
                         dto.NumberLike = NumberLikes(e.Id);
@@ -133,9 +136,11 @@ namespace GraduationProjectAPI.Data
                     UserPost interaction = _db.UserPosts.Where(p => p.IdPost == e.Id && p.IdUser==idUser).Include(r => r.Post).Include(r => r.User).FirstOrDefault();
                     if (interaction != null)
                     {
+                        var content = _db.Contents.FirstOrDefault(p => p.Id == e.IdContent);
                         dto.post = e;
                         // dto.Image = e.Post.User.Image;
                         dto.UserImage = us.Image;
+                        dto.post.Content = content;
                         dto.Interaction = interaction.Interaction;
                         dto.UserPostId = interaction.Id;
                         // dto.Name = e.Post.User.Name;
@@ -149,10 +154,12 @@ namespace GraduationProjectAPI.Data
                     }
                     else
                     {
+                        var content = _db.Contents.FirstOrDefault(p => p.Id == e.IdContent);
                         dto.post = e;
                         //     dto.Image = e.Post.User.Image;
                         dto.UserImage = us.Image;
                         dto.Interaction = false;
+                        dto.post.Content = content;
                         // dto.Name = e.Post.User.Name;
                         dto.UserName = us.UserName;
                         dto.NumberLike = NumberLikes(e.Id);
@@ -210,7 +217,7 @@ namespace GraduationProjectAPI.Data
         {
             foreach (Follow f in users)
             {
-                var data = _db.Posts.Where(p => p.IdUser == f.followedId && p.IdContent == IdContent &&p.IdGroup==0).Include(r => r.Comment).ToList();
+                var data = _db.Posts.Where(p => p.IdUser == f.followedId && p.IdContent == IdContent &&p.IdGroup==0).Include(t => t.Content).Include(r => r.Comment).ToList();
                 posts.AddRange(data);
             }
         }
