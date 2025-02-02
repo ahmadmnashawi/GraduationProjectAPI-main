@@ -38,11 +38,11 @@ namespace GraduationProjectAPI.Controllers
         }
         [HttpGet]
         [ActionName("SearchUsers")]
-        public IActionResult SearchUsers([FromQuery] string search)
+        public IActionResult SearchUsers([FromQuery] string search, [FromQuery] int IdUser)
         {
             if (search != null)
             {
-                var data = db.SearchUser(search);
+                var data = db.SearchUser(search, IdUser);
                 if (data != null)
                 {
                     return Ok(data);
@@ -61,11 +61,11 @@ namespace GraduationProjectAPI.Controllers
         }
         [HttpGet]
         [ActionName("SearchGroups")]
-        public IActionResult SearchGroups([FromQuery] string search)
+        public IActionResult SearchGroups([FromQuery] string search, [FromQuery] int IdUser)
         {
             if (search != null)
             {
-                var data = db.SearchGroup(search);
+                var data = db.SearchGroup(search, IdUser);
                 if (data != null)
                 {
                     return Ok(data);
@@ -84,11 +84,11 @@ namespace GraduationProjectAPI.Controllers
         }
         [HttpGet]
         [ActionName("SearchContent")]
-        public IActionResult SearchContent([FromQuery] string search)
+        public IActionResult SearchContent([FromQuery] string search, [FromQuery] int IdUser)
         {
             if (search != null)
             {
-                var data = db.SearchContent(search);
+                var data = db.SearchContent(search, IdUser);
                 if (data != null)
                 {
                     return Ok(data);
@@ -107,11 +107,11 @@ namespace GraduationProjectAPI.Controllers
         }
         [HttpGet]
         [ActionName("SearchLibrary")]
-        public IActionResult SearchLibrary([FromQuery] string search)
+        public IActionResult SearchLibrary([FromQuery] string search, [FromQuery] int IdUser)
         {
             if (search != null)
             {
-                var data = db.SearchLibrary(search);
+                var data = db.SearchLibrary(search, IdUser);
                 if (data != null)
                 {
                     return Ok(data);
@@ -153,11 +153,11 @@ namespace GraduationProjectAPI.Controllers
         }
         [HttpGet]
         [ActionName("SearchReferance")]
-        public IActionResult SearchReferance([FromQuery] string search)
+        public IActionResult SearchReferance([FromQuery] string search, [FromQuery] int IdUser)
         {
             if (search != null)
             {
-                var data = db.SearchReferance(search);
+                var data = db.SearchReferance(search, IdUser);
                 if (data != null)
                 {
                     return Ok(data);
@@ -176,11 +176,11 @@ namespace GraduationProjectAPI.Controllers
         }
         [HttpGet]
         [ActionName("SearchBook")]
-        public IActionResult SearchBook([FromQuery] string search)
+        public IActionResult SearchBook([FromQuery] string search, [FromQuery] int IdUser)
         {
             if (search != null)
             {
-                var data = db.SearchBook(search);
+                var data = db.SearchBook(search, IdUser);
                 if (data != null)
                 {
                     return Ok(data);
@@ -199,11 +199,11 @@ namespace GraduationProjectAPI.Controllers
         }
         [HttpGet]
         [ActionName("SearchWriter")]
-        public IActionResult SearchWriter([FromQuery] string search)
+        public IActionResult SearchWriter([FromQuery] string search, [FromQuery] int IdUser)
         {
             if (search != null)
             {
-                var data = db.SearchWriter(search);
+                var data = db.SearchWriter(search, IdUser);
                 if (data != null)
                 {
                     return Ok(data);

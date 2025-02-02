@@ -17,59 +17,108 @@ namespace GraduationProjectAPI.Data
         public List<SearchDto> Search(string search,int IdUser)
         {
             List<SearchDto> data = new List<SearchDto>();
-            List<object> user = _db.Users.Where(p => p.UserName.Contains( search) || p.Name.Contains( search)).ToList<object>();
-            List<object> group = _db.Groups.Where(p => p.groupName.Contains(search)).ToList<object>();
-            List<object> content = _db.Contents.Where(p => p.typeName.Contains(search)).ToList<object>();
-            List<object> library = _db.Libraries.Where(p => p.libraryName.Contains(search)).ToList<object>();
-            List<object> complaint = _db.Complaints.Where(p => p.complaint.Contains(search) && p.IdUser==IdUser).ToList<object>();
-            List<object> refreance = _db.References.Where(p => p.referenceName.Contains(search)).ToList<object>();
-            List<Book> book = _db.Books.Where(p => p.BookName.Contains(search) && p.IsDeleted==false).ToList();
-            List<Writer> writer = _db.Writers.Where(p => p.writerName.Contains(search) && p.IsDeleted==false).ToList();
+            var user = _db.Users.Where(p => p.UserName.Contains( search) || p.Name.Contains( search)).ToList();
+            var group = _db.Groups.Where(p => p.groupName.Contains(search)).Include(t=>t.Content).ToList();
+            var content = _db.Contents.Where(p => p.typeName.Contains(search)).ToList();
+            var library = _db.Libraries.Where(p => p.libraryName.Contains(search)).ToList();
+            var complaint = _db.Complaints.Where(p => p.complaint.Contains(search) && p.IdUser==IdUser).ToList();
+            var refreance = _db.References.Where(p => p.referenceName.Contains(search)).ToList();
+            var book = _db.Books.Where(p => p.BookName.Contains(search) && p.IsDeleted==false).ToList();
+            var writer = _db.Writers.Where(p => p.writerName.Contains(search) && p.IsDeleted==false).ToList();
             if(user.Count != 0)
             {
                 SearchDto dto = new SearchDto();
-                dto.search = user;
+                dto.search = new List<SubSearchDto>();
+                foreach (var item in user)
+                {
+                    var searchData = (object)item;
+                    var followd = _db.Follows.Where(t => t.followId == IdUser && t.followedId == item.Id).FirstOrDefault();
+                    if (followd != null)
+                    {
+                        dto.search.Add(new SubSearchDto { SearchData = searchData, IsFollowed = true });
+                    }
+                    else
+                    {
+                        dto.search.Add(new SubSearchDto { SearchData = searchData, IsFollowed = false });
+                    }
+
+                }
+
                 dto.Type = "user";
                 data.Add(dto) ;
             }
             if(group.Count != 0)
             {
                 SearchDto dto = new SearchDto();
-                dto.search = group;
+                dto.search = new List<SubSearchDto>();
+                foreach (var item in group)
+                {
+                    var followd = _db.UserGroups.Where(t => t.IdUser == IdUser && t.IdGroup == item.Id).FirstOrDefault();
+                    if (followd != null)
+                    {
+                        dto.search.Add(new SubSearchDto { SearchData = item ,IsFollowed=true});
+                    }
+                    else
+                    {
+                        dto.search.Add(new SubSearchDto { SearchData = item, IsFollowed = false });
+                    }
+
+                }
                 dto.Type = "group";
                 data.Add(dto);
             }
             if(content.Count != 0)
             {
                 SearchDto dto = new SearchDto();
-                dto.search = content;
+                dto.search = new List<SubSearchDto>();
+                foreach (var item in content)
+                {
+                    dto.search.Add(new SubSearchDto { SearchData = item });
+
+                }
                 dto.Type = "content";
                 data.Add(dto);
             }
             if(library.Count != 0)
             {
                 SearchDto dto = new SearchDto();
-                dto.search = library;
+                dto.search = new List<SubSearchDto>();
+                foreach (var item in library)
+                {
+                    dto.search.Add(new SubSearchDto { SearchData = item });
+
+                }
                 dto.Type = "library";
                 data.Add(dto);
             }
             if(complaint.Count != 0)
             {
                 SearchDto dto = new SearchDto();
-                dto.search = complaint;
+                dto.search = new List<SubSearchDto>();
+                foreach (var item in complaint)
+                {
+                    dto.search.Add(new SubSearchDto { SearchData = item });
+
+                }
                 dto.Type = "complaint";
                 data.Add(dto);
             }
             if(refreance.Count !=0)
             {
                 SearchDto dto = new SearchDto();
-                dto.search = refreance;
+                dto.search = new List<SubSearchDto>();
+                foreach (var item in refreance)
+                {
+                    dto.search.Add(new SubSearchDto { SearchData = item });
+
+                }
                 dto.Type = "refreance";
                 data.Add(dto);
             }
             if(book.Count != 0)
             {
                 SearchDto dto = new SearchDto();
+                dto.search = new List<SubSearchDto>();
                 List<Library> list = new List<Library>();
                 List<object> librarys = new List<object>();
                 foreach (Book e in book)
@@ -80,18 +129,18 @@ namespace GraduationProjectAPI.Data
                         Library c = _db.Libraries.Where(p => p.Id == x.IdLibrary).FirstOrDefault();
                         if (!list.Contains(c))
                         {
-                            librarys.Add(c);
+                            dto.search.Add(new SubSearchDto { SearchData = c });
                             list.Add(c);
                         }
                     }
                 }
-                dto.search = librarys;
                 dto.Type = "library";
                 data.Add(dto);
             }
             if(writer.Count != 0)
             {
                 SearchDto dto = new SearchDto();
+                dto.search = new List<SubSearchDto>();
                 List<Library> list = new List<Library>();
                 List<object> librarys = new List<object>();
                 foreach (Writer e in writer)
@@ -105,62 +154,98 @@ namespace GraduationProjectAPI.Data
                             Library l = _db.Libraries.Where(p => p.Id == v.IdLibrary).FirstOrDefault();
                             if (!list.Contains(l))
                             {
-                                librarys.Add(l);
+                                dto.search.Add(new SubSearchDto { SearchData = l });
+                   
                                 list.Add(l);
                             }
                         }
                     }
                 }
-                dto.search = librarys;
                 dto.Type = "library";
                 data.Add(dto);
             }
             if (data.Count != 0) return data;
             else return null;
         }
-        public SearchDto SearchUser(string search)
+        public SearchDto SearchUser(string search, int IdUser)
         {
-            List<object> users = _db.Users.Where(p => p.UserName.Contains(search) || p.Name.Contains(search)).ToList<object>();
+           var users = _db.Users.Where(p => p.UserName.Contains(search) || p.Name.Contains(search)).ToList();
             if (users.Count != 0)
             {
                 SearchDto dto = new SearchDto();
-                dto.search = users;
+                dto.search = new List<SubSearchDto>();
+                foreach (var item in users)
+                {
+                    var followd = _db.Follows.Where(t => t.followId == IdUser && t.followedId == item.Id).FirstOrDefault();
+                    if (followd != null)
+                    {
+                        dto.search.Add(new SubSearchDto { SearchData = item, IsFollowed = true });
+                    }
+                    else
+                    {
+                        dto.search.Add(new SubSearchDto { SearchData = item, IsFollowed = false });
+                    }
+
+                }
                 dto.Type = "user";
                 return dto;
             }
             else return null;
         }
-        public SearchDto SearchGroup(string search)
+        public SearchDto SearchGroup(string search, int IdUser)
         {
-            List<object> groups = _db.Groups.Where(p => p.groupName.Contains(search)).ToList<object>();
+            var groups = _db.Groups.Where(p => p.groupName.Contains(search)).Include(t => t.Content).ToList();
             if (groups.Count != 0)
             {
                 SearchDto dto = new SearchDto();
-                dto.search = groups;
+                dto.search = new List<SubSearchDto>();
+                foreach (var item in groups)
+                {
+                    var followd = _db.UserGroups.Where(t => t.IdUser == IdUser && t.IdGroup == item.Id).FirstOrDefault();
+                    if (followd != null)
+                    {
+                        dto.search.Add(new SubSearchDto { SearchData = item, IsFollowed = true });
+                    }
+                    else
+                    {
+                        dto.search.Add(new SubSearchDto { SearchData = item, IsFollowed = false });
+                    }
+
+                }
                 dto.Type = "group";
                 return dto;
             }
             else return null;
         }
-        public SearchDto SearchContent(string search)
+        public SearchDto SearchContent(string search, int IdUser)
         {
             List<object> content = _db.Contents.Where(p => p.typeName.Contains(search)).ToList<object>();
             if (content.Count != 0)
             {
                 SearchDto dto = new SearchDto();
-                dto.search = content;
+                dto.search = new List<SubSearchDto>();
+                foreach (var item in content)
+                {
+                    dto.search.Add(new SubSearchDto { SearchData = item });
+
+                }
                 dto.Type = "content";
                 return dto;
             }
             else return null;
         }
-        public SearchDto SearchLibrary(string search)
+        public SearchDto SearchLibrary(string search, int IdUser)
         {
             List<object> library = _db.Libraries.Where(p => p.libraryName.Contains(search)).ToList<object>();
             if (library.Count != 0)
             {
                 SearchDto dto = new SearchDto();
-                dto.search = library;
+                dto.search = new List<SubSearchDto>();
+                foreach (var item in library)
+                {
+                    dto.search.Add(new SubSearchDto { SearchData = item });
+
+                }
                 dto.Type = "library";
                 return dto;
             }
@@ -172,31 +257,44 @@ namespace GraduationProjectAPI.Data
             if (complaint.Count != 0)
             {
                 SearchDto dto = new SearchDto();
-                dto.search = complaint;
+                dto.search = new List<SubSearchDto>();
+                foreach (var item in complaint)
+                {
+                    dto.search.Add(new SubSearchDto { SearchData = item });
+
+                }
                 dto.Type = "complaint";
                 return dto;
             }
             else return null;
         }
-        public SearchDto SearchReferance(string search)
+        public SearchDto SearchReferance(string search, int IdUser)
         {
-            List<object> referance = _db.References.Where(p => p.referenceName.Contains(search)).ToList<object>();
+            var referance = _db.References.Where(p => p.referenceName.Contains(search)).ToList();
             if (referance.Count != 0)
             {
                 SearchDto dto = new SearchDto();
-                dto.search = referance;
+                dto.search = new List<SubSearchDto>();
+                foreach (var item in referance)
+                {
+                    dto.search.Add(new SubSearchDto { SearchData = item });
+
+                }
                 dto.Type = "referance";
                 return dto;
             }
             else return null;
         }
-        public SearchDto SearchBook(string search)
+        public SearchDto SearchBook(string search, int IdUser)
         {
-            List<object> library = new List<object>();
-            List<Library> list = new List<Library>();
+   
             List<Book> book = _db.Books.Where(p => p.BookName.Contains(search) && p.IsDeleted == false).ToList();
             if (book.Count != 0)
             {
+                SearchDto dto = new SearchDto();
+                dto.search = new List<SubSearchDto>();
+                List<Library> list = new List<Library>();
+                List<object> librarys = new List<object>();
                 foreach (Book e in book)
                 {
                     List<BookLibrary> l = _db.BookLibraries.Where(p => p.IdBook == e.Id && p.IsDeleted == false).ToList();
@@ -205,25 +303,26 @@ namespace GraduationProjectAPI.Data
                         Library c = _db.Libraries.Where(p => p.Id == x.IdLibrary).FirstOrDefault();
                         if (!list.Contains(c))
                         {
-                            library.Add(c);
+                            dto.search.Add(new SubSearchDto { SearchData = c });
                             list.Add(c);
                         }
                     }
                 }
-                SearchDto dto = new SearchDto();
-                dto.search = library;
                 dto.Type = "library";
                 return dto;
             }
             else return null;
         }
-        public SearchDto SearchWriter(string search)
+        public SearchDto SearchWriter(string search, int IdUser)
         {
-            List<object> library = new List<object>();
-            List<Library> list = new List<Library>();
+ 
             List<Writer> bookWriters = _db.Writers.Where(p => p.writerName.Contains(search) && p.IsDeleted == false).ToList();
             if (bookWriters.Count != 0)
             {
+                SearchDto dto = new SearchDto();
+                dto.search = new List<SubSearchDto>();
+                List<Library> list = new List<Library>();
+                List<object> librarys = new List<object>();
                 foreach (Writer e in bookWriters)
                 {
                     List<BookWriter> b = _db.BookWriters.Where(p => p.IdWriter == e.Id && p.IsDeleted == false).ToList();
@@ -235,14 +334,13 @@ namespace GraduationProjectAPI.Data
                             Library l = _db.Libraries.Where(p => p.Id == v.IdLibrary).FirstOrDefault();
                             if (!list.Contains(l))
                             {
-                                library.Add(l);
+                                dto.search.Add(new SubSearchDto { SearchData = l });
+
                                 list.Add(l);
                             }
                         }
                     }
                 }
-                SearchDto dto = new SearchDto();
-                dto.search = library;
                 dto.Type = "library";
                 return dto;
             }
