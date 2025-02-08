@@ -150,28 +150,23 @@ namespace GraduationProjectAPI.Data
             modelBuilder.Entity<Game>().HasData(new Game { Id = 2, GameName = "Word Game", ImageOnline= "https://i.ibb.co/stHdMZr/images-q-tbn-ANd9-Gc-Qp-Nt4uu-KVWsowdvn-Hq-Jk-G-FCIV8-SYZm-EENLjri0-M7v-Whid-MEq-OGLMg-IFSfe-Jg-GZe.jpg", GameLevel = null, Image = null });
             modelBuilder.Entity<Game>().HasData(new Game { Id = 3, GameName = "Math Game", ImageOnline= "https://i.ibb.co/JvyfVxK/images-q-tbn-ANd9-Gc-SV6r-E2cz9-L57-CJd-DPAX2zi-S2a-x3-WRn-VKZCQ-s.jpg", GameLevel = null, Image = null });
             modelBuilder.Entity<Game>().HasData(new Game { Id = 4, GameName = "Foucs Game",ImageOnline= "https://i.ibb.co/St8m7bP/pic7490663.jpg", GameLevel = null, Image = null });
-            modelBuilder.Entity<Game>().HasData(new Game { Id = 5, GameName = "Packet Game", ImageOnline= "https://i.ibb.co/BjkJBNs/images-q-tbn-ANd9-Gc-Tm9-XZwoit0-w-EJ-Br-Qu7-Cw-Vjqagyre-BYYebg-s.jpg", GameLevel = null, Image = null });
-            //seeds pof user game
+          //seeds pof user game
             modelBuilder.Entity<GameUser>().HasData(new GameUser { Id = 1, IdGame=1,IdUser=2,Score=1,userLevel="1" });
             modelBuilder.Entity<GameUser>().HasData(new GameUser { Id = 2, IdGame = 2, IdUser = 2, Score = 1, userLevel = "1" });
             modelBuilder.Entity<GameUser>().HasData(new GameUser { Id = 3, IdGame = 3, IdUser = 2, Score = 1, userLevel = "1" });
             modelBuilder.Entity<GameUser>().HasData(new GameUser { Id = 4, IdGame = 4, IdUser = 2, Score = 1, userLevel = "1" });
-            modelBuilder.Entity<GameUser>().HasData(new GameUser { Id = 5, IdGame = 5, IdUser = 2, Score = 1, userLevel = "1" });
             modelBuilder.Entity<GameUser>().HasData(new GameUser { Id = 6, IdGame = 1, IdUser = 3, Score = 1, userLevel = "1" });
             modelBuilder.Entity<GameUser>().HasData(new GameUser { Id = 7, IdGame = 2, IdUser = 3, Score = 1, userLevel = "1" });
             modelBuilder.Entity<GameUser>().HasData(new GameUser { Id = 8, IdGame = 3, IdUser =3, Score = 1, userLevel = "1" });
             modelBuilder.Entity<GameUser>().HasData(new GameUser { Id = 9, IdGame = 4, IdUser = 3, Score = 1, userLevel = "1" });
-            modelBuilder.Entity<GameUser>().HasData(new GameUser { Id = 10, IdGame = 5, IdUser = 3, Score = 1, userLevel = "1" });
             modelBuilder.Entity<GameUser>().HasData(new GameUser { Id = 11, IdGame = 1, IdUser = 4, Score = 1, userLevel = "1" });
             modelBuilder.Entity<GameUser>().HasData(new GameUser { Id = 12, IdGame = 2, IdUser = 4, Score = 1, userLevel = "1" });
             modelBuilder.Entity<GameUser>().HasData(new GameUser { Id = 13, IdGame = 3, IdUser = 4, Score = 1, userLevel = "1" });
             modelBuilder.Entity<GameUser>().HasData(new GameUser { Id = 14, IdGame = 4, IdUser = 4, Score = 1, userLevel = "1" });
-            modelBuilder.Entity<GameUser>().HasData(new GameUser { Id = 15, IdGame = 5, IdUser = 4, Score = 1, userLevel = "1" });
             modelBuilder.Entity<GameUser>().HasData(new GameUser { Id = 16, IdGame = 1, IdUser = 5, Score = 1, userLevel = "1" });
             modelBuilder.Entity<GameUser>().HasData(new GameUser { Id = 17, IdGame = 2, IdUser = 5, Score = 1, userLevel = "1" });
             modelBuilder.Entity<GameUser>().HasData(new GameUser { Id = 18, IdGame = 3, IdUser = 5, Score = 1, userLevel = "1" });
             modelBuilder.Entity<GameUser>().HasData(new GameUser { Id = 19, IdGame = 4, IdUser = 5, Score = 1, userLevel = "1" });
-            modelBuilder.Entity<GameUser>().HasData(new GameUser { Id = 20, IdGame = 5, IdUser = 5, Score = 1, userLevel = "1" });
             //seeds for BookType
             modelBuilder.Entity<BookType>().HasData(new BookType { Id = 1, bookType="Self Development",IsDeleted=false });
             modelBuilder.Entity<BookType>().HasData(new BookType { Id = 2, bookType = "Police Novels", IsDeleted = false });
@@ -441,26 +436,23 @@ namespace GraduationProjectAPI.Data
 
             //seeds for buy book
             modelBuilder.Entity<Buybook>().HasData(new Buybook { Id = 1, Price = 3000, Count=3, IdUser=1,IdBookLibrary=1 });
-            modelBuilder.Entity<Buybook>().HasData(new Buybook { Id = 2, Price = 4000, Count = 4, IdUser = 1, IdBookLibrary = 42 });
-            modelBuilder.Entity<Buybook>().HasData(new Buybook { Id = 3, Price = 3000, Count = 3, IdUser = 1, IdBookLibrary = 83 });
-            modelBuilder.Entity<Buybook>().HasData(new Buybook { Id = 4, Price = 3000, Count = 3, IdUser = 1, IdBookLibrary = 124 });
-            modelBuilder.Entity<Buybook>().HasData(new Buybook { Id = 5, Price = 3000, Count = 3, IdUser = 2, IdBookLibrary = 5 });
-            modelBuilder.Entity<Buybook>().HasData(new Buybook { Id = 6, Price = 3000, Count = 3, IdUser = 2, IdBookLibrary = 55 });
-            modelBuilder.Entity<Buybook>().HasData(new Buybook { Id = 7, Price = 3000, Count = 3, IdUser = 2, IdBookLibrary = 56 });
-            modelBuilder.Entity<Buybook>().HasData(new Buybook { Id = 8, Price = 3000, Count = 3, IdUser = 2, IdBookLibrary = 123 });
-            modelBuilder.Entity<Buybook>().HasData(new Buybook { Id = 9, Price = 3000, Count = 3, IdUser = 2, IdBookLibrary = 136});
-            modelBuilder.Entity<Buybook>().HasData(new Buybook { Id = 10, Price = 3000, Count = 3, IdUser = 3, IdBookLibrary = 7 });
-            modelBuilder.Entity<Buybook>().HasData(new Buybook { Id = 11, Price = 3000, Count = 3, IdUser = 3, IdBookLibrary = 45 });
-            modelBuilder.Entity<Buybook>().HasData(new Buybook { Id = 12, Price = 3000, Count = 3, IdUser = 3, IdBookLibrary = 88 });
-            modelBuilder.Entity<Buybook>().HasData(new Buybook { Id = 13, Price = 3000, Count = 3, IdUser = 3, IdBookLibrary = 102 });
-            modelBuilder.Entity<Buybook>().HasData(new Buybook { Id = 14, Price = 3000, Count = 3, IdUser = 4, IdBookLibrary = 9 });
-            modelBuilder.Entity<Buybook>().HasData(new Buybook { Id = 15, Price = 3000, Count = 3, IdUser = 4, IdBookLibrary = 27 });
-            modelBuilder.Entity<Buybook>().HasData(new Buybook { Id = 16, Price = 3000, Count = 3, IdUser = 4, IdBookLibrary = 89 });
-            modelBuilder.Entity<Buybook>().HasData(new Buybook { Id = 17, Price = 3000, Count = 3, IdUser = 4, IdBookLibrary = 135 });
-            modelBuilder.Entity<Buybook>().HasData(new Buybook { Id = 18, Price = 3000, Count = 3, IdUser = 5, IdBookLibrary = 33 });
-            modelBuilder.Entity<Buybook>().HasData(new Buybook { Id = 19, Price = 3000, Count = 3, IdUser = 5, IdBookLibrary = 44 });
-            modelBuilder.Entity<Buybook>().HasData(new Buybook { Id = 20, Price = 3000, Count = 3, IdUser = 5, IdBookLibrary = 122 });
-            modelBuilder.Entity<Buybook>().HasData(new Buybook { Id = 21, Price = 3000, Count = 3, IdUser = 5, IdBookLibrary = 134 });
+            modelBuilder.Entity<Buybook>().HasData(new Buybook { Id = 2, Price = 3000, Count = 3, IdUser = 2, IdBookLibrary = 5 });
+            modelBuilder.Entity<Buybook>().HasData(new Buybook { Id = 3, Price = 3000, Count = 3, IdUser = 2, IdBookLibrary = 55 });
+            modelBuilder.Entity<Buybook>().HasData(new Buybook { Id = 4, Price = 3000, Count = 3, IdUser = 2, IdBookLibrary = 56 });
+            modelBuilder.Entity<Buybook>().HasData(new Buybook { Id = 5, Price = 3000, Count = 3, IdUser = 2, IdBookLibrary = 123 });
+            modelBuilder.Entity<Buybook>().HasData(new Buybook { Id = 6, Price = 3000, Count = 3, IdUser = 2, IdBookLibrary = 136});
+            modelBuilder.Entity<Buybook>().HasData(new Buybook { Id = 7, Price = 3000, Count = 3, IdUser = 3, IdBookLibrary = 7 });
+            modelBuilder.Entity<Buybook>().HasData(new Buybook { Id = 8, Price = 3000, Count = 3, IdUser = 3, IdBookLibrary = 45 });
+            modelBuilder.Entity<Buybook>().HasData(new Buybook { Id = 9, Price = 3000, Count = 3, IdUser = 3, IdBookLibrary = 88 });
+            modelBuilder.Entity<Buybook>().HasData(new Buybook { Id = 10, Price = 3000, Count = 3, IdUser = 3, IdBookLibrary = 102 });
+            modelBuilder.Entity<Buybook>().HasData(new Buybook { Id = 11, Price = 3000, Count = 3, IdUser = 4, IdBookLibrary = 9 });
+            modelBuilder.Entity<Buybook>().HasData(new Buybook { Id = 12, Price = 3000, Count = 3, IdUser = 4, IdBookLibrary = 27 });
+            modelBuilder.Entity<Buybook>().HasData(new Buybook { Id = 13, Price = 3000, Count = 3, IdUser = 4, IdBookLibrary = 89 });
+            modelBuilder.Entity<Buybook>().HasData(new Buybook { Id = 14, Price = 3000, Count = 3, IdUser = 4, IdBookLibrary = 135 });
+            modelBuilder.Entity<Buybook>().HasData(new Buybook { Id = 15, Price = 3000, Count = 3, IdUser = 5, IdBookLibrary = 33 });
+            modelBuilder.Entity<Buybook>().HasData(new Buybook { Id = 16, Price = 3000, Count = 3, IdUser = 5, IdBookLibrary = 44 });
+            modelBuilder.Entity<Buybook>().HasData(new Buybook { Id = 17, Price = 3000, Count = 3, IdUser = 5, IdBookLibrary = 122 });
+            modelBuilder.Entity<Buybook>().HasData(new Buybook { Id = 18, Price = 3000, Count = 3, IdUser = 5, IdBookLibrary = 134 });
             //seeds for Comment
             modelBuilder.Entity<Comments>().HasData(new Comments { Id = 1, Comment = "Wow" , IdUser = 2, IdPost=1 });
             modelBuilder.Entity<Comments>().HasData(new Comments { Id = 2, Comment = "i do not Now That Before", IdUser = 3, IdPost = 1 });
