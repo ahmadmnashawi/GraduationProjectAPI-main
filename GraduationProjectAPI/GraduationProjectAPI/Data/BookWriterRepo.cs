@@ -1,5 +1,7 @@
 ﻿using GraduationProjectAPI.Model;
 using GraduationProjectAPI.Infrastructure;
+using Microsoft.EntityFrameworkCore;
+
 namespace GraduationProjectAPI.Data
 {
     public class BookWriterRepo : IBookWriter
@@ -32,6 +34,22 @@ namespace GraduationProjectAPI.Data
                 return null;
 
         }
+
+        public List<BookWriter> GetBookAllWriter(int id)
+        {
+            var bookWriter = _db.BookWriters.Include(t => t.Writer).Where(p => p.IdBook == id && p.IsDeleted == false).ToList();
+ 
+            if (bookWriter != null)
+            {
+                foreach (var item in bookWriter)
+                {
+                    item.Writer = _db.Writers.FirstOrDefault(t => t.Id == item.IdWriter);
+                }
+                return bookWriter;
+            }  else
+                return null;
+
+        }
         public bool Save(BookWriter bookWriter)
         {
             if (bookWriter.Id == 0)
@@ -45,16 +63,24 @@ namespace GraduationProjectAPI.Data
             }
             return false;
         }
-        public void Update(BookWriter bookWriter)
+        public void  Update(int idBook, int IdWriter,bool toDelete)
+
         {
-            var BookWriter = _db.BookWriters.FirstOrDefault(p => p.Id == bookWriter.Id && p.IsDeleted==false);
-            if (BookWriter != null)
+            if (toDelete)
             {
-                BookWriter.IdBook = bookWriter.IdBook;
-                BookWriter.IdWriter = bookWriter.IdWriter;
-                BookWriter.IsDeleted = bookWriter.IsDeleted;
-                _db.SaveChanges();
+                var BookWriter = _db.BookWriters.FirstOrDefault(p => p.IdBook == idBook && p.IdWriter == IdWriter);
+                if (BookWriter != null)
+                {
+                    _db.BookWriters.Remove(BookWriter);
+                    _db.SaveChanges();
+                }
             }
+            else
+            {
+                Save(new BookWriter { Id = 0, IdBook = idBook, IdWriter = IdWriter, IsDeleted = false });
+            }
+ 
+
         }
         public bool IsExisting(BookWriter BookWriter)
         {

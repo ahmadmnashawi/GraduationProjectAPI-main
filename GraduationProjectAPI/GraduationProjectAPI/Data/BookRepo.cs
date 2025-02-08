@@ -53,6 +53,7 @@ namespace GraduationProjectAPI.Data
             if (Book != null)
             {
                 Book.bookImage = book.bookImage;
+                Book.ImageOnline = book.ImageOnline;
                 Book.BookName = book.BookName;
                 Book.BookPrice = book.BookPrice;
                 Book.IdBookType = book.IdBookType;

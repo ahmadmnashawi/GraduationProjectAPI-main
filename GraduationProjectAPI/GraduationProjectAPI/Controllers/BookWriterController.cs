@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace GraduationProjectAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class BookWriterController : Controller
     {
@@ -20,6 +20,22 @@ namespace GraduationProjectAPI.Controllers
             IQueryable<BookWriter> data = db.GetBookWriters;
             return Ok(data);
         }
+        [HttpGet("{id}")]
+        [ActionName("GetBookAllWriter")]
+        public IActionResult GetBookAllWriter(int id)
+        {
+            var data = db.GetBookAllWriter(id);
+            if (data != null)
+            {
+                return Ok(data);
+            }
+            else
+            {
+                // return NotFound();
+                return Ok(new List<object>());
+            }
+        }
+
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
@@ -48,17 +64,17 @@ namespace GraduationProjectAPI.Controllers
                 return Ok(data);
             }
         }
-        [HttpPut("{id}")]
-        public IActionResult Put([FromBody] BookWriter bookWriter)
+        [HttpPut]
+        public IActionResult Put([FromQuery]  int idBook, [FromQuery] int IdWriter, [FromQuery] bool toDelete)
         {
-            if (bookWriter == null || bookWriter.Id == 0)
+            if (idBook == 0 && IdWriter == 0)
             {
-                // return BadRequest();
+
                 return Ok(new List<object>());
             }
             else
             {
-                db.Update(bookWriter);
+                db.Update(idBook,IdWriter,toDelete);
                 return Ok();
             }
         }

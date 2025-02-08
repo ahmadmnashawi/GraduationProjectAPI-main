@@ -10,15 +10,15 @@ namespace GraduationProjectAPI.Data
             _db = db;
         }
         public IQueryable<BookLibrary> GetBookLibraries => _db.BookLibraries.Where(p => p.IsDeleted==false);
-        
 
-        public void Delete(BookLibrary bookLibrary)
+
+        public void Delete(int IdLibrary, int IdBook)
         {
-            var BookLibrary = _db.BookLibraries.FirstOrDefault(p => p.Id == bookLibrary.Id && p.IsDeleted==false);
+            var BookLibrary = _db.BookLibraries.FirstOrDefault(p => p.IdBook == IdBook&&p.IdLibrary==IdLibrary);
             if (BookLibrary != null)
             {
-                BookLibrary.IsDeleted = true;
-               // _db.BookLibraries.Remove(bookLibrary);
+
+           _db.BookLibraries.Remove(BookLibrary);
                 _db.SaveChanges();
             }
 

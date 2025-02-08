@@ -97,11 +97,15 @@ namespace GraduationProjectAPI.Data
                             else
                             {
                                 Group group = _db.Groups.FirstOrDefault(g => g.Id == p.IdGroup);
+                                if (group != null)
+                                {
+                                    postDto.GroupName = group.groupName;
+                                    postDto.GroupImage = group.Image;
+                                    postDto.GroupImageOnline = group.ImageOnline;
+                                }
                                 postDto.UserName = user.UserName;
                                 postDto.UserImage = user.Image;
-                                postDto.GroupName = group.groupName;
-                                postDto.GroupImage = group.Image;
-                                postDto.GroupImageOnline = group.ImageOnline;
+
                               postDto.Interaction = up.Interaction;
                                 postDto.NumberLike = NumberLikes(p.Id);
                                 postDto.post = p;
