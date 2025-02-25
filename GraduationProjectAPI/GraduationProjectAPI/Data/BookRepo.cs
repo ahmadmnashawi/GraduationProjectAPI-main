@@ -41,7 +41,7 @@ namespace GraduationProjectAPI.Data
                 {
                     var result = _db.Books.Add(book);
                      _db.SaveChanges();
-                    var id = _db.Books.Where(t => t.BookName == book.BookName && t.IdBookType == book.IdBookType&& t.BookPrice == book.BookPrice).First().Id;
+                    var id = _db.Books.Where(t => t.BookName == book.BookName &&  t.BookPrice == book.BookPrice).First().Id;
                     return id;
                 }
             }
